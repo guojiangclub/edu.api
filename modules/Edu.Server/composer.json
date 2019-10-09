@@ -1,0 +1,43 @@
+{
+  "name": "ibrand/edu-server",
+  "type": "library",
+  "description": "iBrand edu server.",
+  "keywords": [
+    "iBrand",
+    "coterie",
+    "server"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "shjchen",
+      "email": "ibrand.shjchen@foxmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~6.0",
+    "orchestra/testbench": "~3.5",
+    "orchestra/database": "~3.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "iBrand\\Edu\\Server\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "iBrand\\Edu\\Server\\Test\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

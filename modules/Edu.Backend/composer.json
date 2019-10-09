@@ -1,0 +1,28 @@
+{
+    "name": "ibrand/edu-backend",
+    "description": "ibrand edu backend for Laravel Application.",
+    "keywords": [
+        "ibrand",
+        "edu",
+        "backend",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "peter chen",
+            "email": "chenhao@element.vip"
+        }
+    ],
+    "require": {
+        "ibrand/laravel-ueditor": "~1.0",
+        "overtrue/laravel-uploader": "~0.0.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "iBrand\\Edu\\Backend\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
