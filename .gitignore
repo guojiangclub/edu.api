@@ -5,6 +5,13 @@
 /vendor
 /.idea
 /.vagrant
+public/*
+public/vendor
+public/assets
+resources/views
+resources/lang
+resources/js
+/github
 Homestead.json
 Homestead.yaml
 npm-debug.log

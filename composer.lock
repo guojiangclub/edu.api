@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "435caf6a88bf06af98db2a44937fe1ef",
+    "content-hash": "cdf079b4db2d1d309653173ed2085be3",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -63,16 +63,16 @@
         },
         {
             "name": "alibabacloud/client",
-            "version": "1.5.17",
+            "version": "1.5.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aliyun/openapi-sdk-php-client.git",
-                "reference": "0bb50708178c086a754812ba739a4c4f22ef2ff4"
+                "reference": "5dcf7b8fdfa64abdae7a5ca867289baf95e8e12a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aliyun/openapi-sdk-php-client/zipball/0bb50708178c086a754812ba739a4c4f22ef2ff4",
-                "reference": "0bb50708178c086a754812ba739a4c4f22ef2ff4",
+                "url": "https://api.github.com/repos/aliyun/openapi-sdk-php-client/zipball/5dcf7b8fdfa64abdae7a5ca867289baf95e8e12a",
+                "reference": "5dcf7b8fdfa64abdae7a5ca867289baf95e8e12a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -146,7 +146,7 @@
                 "sdk",
                 "tool"
             ],
-            "time": "2019-09-16T12:01:10+00:00"
+            "time": "2019-10-11T11:09:47+00:00"
         },
         {
             "name": "alibabacloud/sdk",
@@ -3006,16 +3006,16 @@
         },
         {
             "name": "ibrand/pay",
-            "version": "dev-master",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guojiangclub/pay.git",
-                "reference": "af77e5ef1014fd8215d8a9e259ef5f53c79af630"
+                "reference": "4d8419dcbea621307896adb85397412dab471a81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guojiangclub/pay/zipball/af77e5ef1014fd8215d8a9e259ef5f53c79af630",
-                "reference": "af77e5ef1014fd8215d8a9e259ef5f53c79af630",
+                "url": "https://api.github.com/repos/guojiangclub/pay/zipball/4d8419dcbea621307896adb85397412dab471a81",
+                "reference": "4d8419dcbea621307896adb85397412dab471a81",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3067,7 +3067,7 @@
                 "ibrand",
                 "pay"
             ],
-            "time": "2019-10-09T11:46:51+00:00"
+            "time": "2018-12-29T03:37:46+00:00"
         },
         {
             "name": "ibrand/setting",
@@ -5490,16 +5490,16 @@
         },
         {
             "name": "overtrue/http",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/http.git",
-                "reference": "7270d64d6682f4f936646d50a98621b67baa042a"
+                "reference": "6374e7486d637cd7f8dfa2b8a2f4d5ab055110b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/http/zipball/7270d64d6682f4f936646d50a98621b67baa042a",
-                "reference": "7270d64d6682f4f936646d50a98621b67baa042a",
+                "url": "https://api.github.com/repos/overtrue/http/zipball/6374e7486d637cd7f8dfa2b8a2f4d5ab055110b4",
+                "reference": "6374e7486d637cd7f8dfa2b8a2f4d5ab055110b4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5510,14 +5510,14 @@
             },
             "require": {
                 "ext-curl": "*",
+                "ext-json": "*",
                 "guzzlehttp/guzzle": "^6.3",
-                "monolog/monolog": "^1.23",
                 "php": ">=7.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
                 "overtrue/phplint": "^1.1",
-                "phpunit/phpunit": "^6.5"
+                "phpunit/phpunit": "^6.5 || ^8.0"
             },
             "type": "library",
             "autoload": {
@@ -5536,7 +5536,7 @@
                 }
             ],
             "description": "A simple http client wrapper.",
-            "time": "2019-01-13T08:47:42+00:00"
+            "time": "2019-10-10T03:19:57+00:00"
         },
         {
             "name": "overtrue/laravel-filesystem-qiniu",
@@ -5815,16 +5815,16 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "4.2.5",
+            "version": "4.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "511f0fe01100b7ddb09302d2a86baa69ded1913e"
+                "reference": "4b6d8fb35bd36c93fa58bdd01a6c4fee9d7b98e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/wechat/zipball/511f0fe01100b7ddb09302d2a86baa69ded1913e",
-                "reference": "511f0fe01100b7ddb09302d2a86baa69ded1913e",
+                "url": "https://api.github.com/repos/overtrue/wechat/zipball/4b6d8fb35bd36c93fa58bdd01a6c4fee9d7b98e4",
+                "reference": "4b6d8fb35bd36c93fa58bdd01a6c4fee9d7b98e4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5883,7 +5883,7 @@
                 "weixin",
                 "weixin-sdk"
             ],
-            "time": "2019-09-25T07:05:54+00:00"
+            "time": "2019-10-11T14:38:37+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -9765,16 +9765,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "a16378c4db99be661afc76805242281603d20a7c"
+                "reference": "6dcf9e760a6b476f3e9d80abbc9ce9c4aa921f9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/a16378c4db99be661afc76805242281603d20a7c",
-                "reference": "a16378c4db99be661afc76805242281603d20a7c",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/6dcf9e760a6b476f3e9d80abbc9ce9c4aa921f9c",
+                "reference": "6dcf9e760a6b476f3e9d80abbc9ce9c4aa921f9c",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -9834,7 +9834,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2019-10-08T20:08:44+00:00"
+            "time": "2019-10-10T17:38:20+00:00"
         },
         {
             "name": "zizaco/entrust",
@@ -12203,7 +12203,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ibrand/pay": 20,
         "zizaco/entrust": 20
     },
     "prefer-stable": true,

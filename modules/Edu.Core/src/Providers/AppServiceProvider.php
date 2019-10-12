@@ -51,6 +51,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use iBrand\Edu\Core\Models\VipOrder;
 use iBrand\Edu\Core\Policies\VipOrderPolicy;
+use iBrand\Edu\Core\Console\InstallCommand;
 use Event;
 
 class AppServiceProvider extends ServiceProvider
@@ -66,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(realpath(__DIR__.'/../../migrations'));
 
-        $this->commands([BuildVipPlan::class, SetUserVip::class,SetAdvert::class]);
+        $this->commands([InstallCommand::class,BuildVipPlan::class, SetUserVip::class,SetAdvert::class]);
 
         Event::subscribe('iBrand\Edu\Core\Listeners\Notifications\NotificationsListener');
     }
