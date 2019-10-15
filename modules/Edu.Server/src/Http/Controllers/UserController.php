@@ -17,7 +17,6 @@ use iBrand\Edu\Core\Repositories\CourseMemberRepository;
 use iBrand\Edu\Core\Repositories\UserDetailsRepository;
 use iBrand\Edu\Core\Services\CourseService;
 use iBrand\Edu\Server\Resources\Coupon;
-use iBrand\Coterie\Core\Repositories\CoterieRepository;
 use iBrand\Sms\Facade as Sms;
 use iBrand\Common\Wechat\Platform\Services\MiniProgramService;
 use iBrand\Common\Controllers\Controller;
@@ -33,13 +32,12 @@ class UserController extends Controller
     protected $miniProgramService;
     protected $teacher;
 
-    public function __construct(UserDetailsRepository $userDetailsRepository, CourseMemberRepository $memberRepository, UserRepository $userRepository, CouponRepository $couponRepository,CoterieRepository $coterieRepository,MiniProgramService $miniProgramService,CourseTeacherRepository $teacherRepository)
+    public function __construct(UserDetailsRepository $userDetailsRepository, CourseMemberRepository $memberRepository, UserRepository $userRepository, CouponRepository $couponRepository,MiniProgramService $miniProgramService,CourseTeacherRepository $teacherRepository)
     {
         $this->details = $userDetailsRepository;
         $this->member = $memberRepository;
         $this->user = $userRepository;
         $this->coupon = $couponRepository;
-        $this->coterie=$coterieRepository;
         $this->miniProgramService=$miniProgramService;
         $this->teacher=$teacherRepository;
     }
@@ -69,7 +67,7 @@ class UserController extends Controller
 
         $members = app(CourseService::class)->getCoursesByTeacher($id);
 
-        $coteries=$this->coterie->getCoterieByUserID($id,100);
+        $coteries=null;
 
         return $this->success(compact('user', 'members', 'coteries'));
     }
@@ -123,7 +121,7 @@ class UserController extends Controller
 
         $user=null;
 
-        $coterie=$this->coterie->findByField('id',$id)->first();
+        $coterie=null;
 
         if(!$coterie){
 

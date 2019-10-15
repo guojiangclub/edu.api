@@ -25,7 +25,6 @@ use iBrand\Edu\Core\Repositories\UserDetailsRepository;
 use iBrand\Edu\Core\Repositories\VipMemberRepository;
 use iBrand\Edu\Core\Repositories\CourseMemberRepository;
 use iBrand\Edu\Core\Services\DiscountService;
-use iBrand\Coterie\Core\Repositories\CoterieRepository;
 use iBrand\Component\Pay\Models\Charge as ChargeModel;
 use iBrand\Common\Controllers\Controller;
 use iBrand\Edu\Core\Services\CourseService;
@@ -227,7 +226,7 @@ class CourseOrderController extends Controller
         }
         if ('paid' == $order->status) {
 
-            $coteries = app(CoterieRepository::class)->getCoterieByUserID($order->course->teacher->id, 100);
+            $coteries = null;
 
             $this->courseService->becomeStudent($order);
 

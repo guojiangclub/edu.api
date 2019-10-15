@@ -21,7 +21,6 @@ use iBrand\Edu\Core\Repositories\VipMemberRepository;
 use iBrand\Edu\Core\Services\CourseService;
 use iBrand\Edu\Server\Resources\Course;
 use iBrand\Edu\Server\Resources\CourseAnnouncement;
-use iBrand\Coterie\Core\Repositories\CoterieRepository;
 use iBrand\Edu\Core\Models\CourseOrderAdjustment;
 use iBrand\Component\User\Repository\UserRepository;
 use iBrand\Common\Controllers\Controller;
@@ -123,7 +122,7 @@ class CourseController extends Controller
         if ($course->teacher) {
             $teacher=$course->teacher->with('details')->where('user_id',$course->teacher->user_id)->first();
             $teacher->avatar=getHellobiAvatar($course->teacher->avatar);
-            $coteries = app(CoterieRepository::class)->getCoterieByUserID($course->teacher->user_id);
+            $coteries = null;
             $coterie = $coteries->total() ? $coteries->toArray()['data'][0] : null;
         }
 
