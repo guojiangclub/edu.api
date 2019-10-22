@@ -14,7 +14,7 @@ namespace iBrand\Edu\Core\Listeners\Notifications;
 use iBrand\Component\User\Repository\UserBindRepository;
 use iBrand\Component\User\Repository\UserRepository;
 use iBrand\Edu\Core\Models\CourseOrder;
-use iBrand\Hellobi\Repositories\UserRepository as HellobiUser;
+//use iBrand\Hellobi\Repositories\UserRepository as HellobiUser;
 
 /**
  * 课程付款成功微信模板通知

@@ -30,13 +30,13 @@ class InstallCommand extends Command
     {
         $this->call('key:generate');
 
-        $this->call('vendor:publish',[0]);
+        //$this->call('vendor:publish',[0]);
 
         $this->call('storage:link');
 
         $this->call('ibrand:backend-install');
 
-        $this->call('passport:install');
+        $this->call('passport:keys');
 
         if(!DB::table(config('admin.database.menu_table'))->where('title','在线教育')->first()){
 

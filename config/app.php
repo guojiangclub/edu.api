@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -173,7 +173,7 @@ return [
         Overtrue\LaravelWechat\ServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
-
+        iBrand\Auth\Api\ApiServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -240,6 +240,7 @@ return [
 
         'Charge'=> iBrand\Component\Pay\Facades\Charge::class,
         'PayNotify' => iBrand\Component\Pay\Facades\PayNotify::class,
+        'AliyunVod' => iBrand\Aliyun\Vod\Facade::class
 
     ],
 

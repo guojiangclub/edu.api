@@ -18,7 +18,7 @@
         "ibrand/laravel-currency-format": "~1.0",
         "ibrand/laravel-miniprogram-poster": "^1.1",
         "ibrand/laravel-sms": "~1.0",
-        "ibrand/pay": "^0.1.1",
+        "ibrand/pay": "~0.2",
         "ibrand/uploader": "^1.0",
         "ibrand/user": "~1.0",
         "intervention/image": "^2.3",

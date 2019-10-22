@@ -123,7 +123,7 @@ class CourseController extends Controller
             $teacher=$course->teacher->with('details')->where('user_id',$course->teacher->user_id)->first();
             $teacher->avatar=getHellobiAvatar($course->teacher->avatar);
             $coteries = null;
-            $coterie = $coteries->total() ? $coteries->toArray()['data'][0] : null;
+//            $coterie = $coteries->total() ? $coteries->toArray()['data'][0] : null;
         }
 
         $coupons = $this->discount->findActive(1);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cdf079b4db2d1d309653173ed2085be3",
+    "content-hash": "3b86308f7b7dbaef4aed4785da6d9d02",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -150,16 +150,16 @@
         },
         {
             "name": "alibabacloud/sdk",
-            "version": "1.7.114",
+            "version": "1.7.124",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aliyun/openapi-sdk-php.git",
-                "reference": "04e45d0b6fabbd4017d75f8c5404112b710a93a0"
+                "reference": "b545972ebdbaec015ef83db51b96baf38802a589"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aliyun/openapi-sdk-php/zipball/04e45d0b6fabbd4017d75f8c5404112b710a93a0",
-                "reference": "04e45d0b6fabbd4017d75f8c5404112b710a93a0",
+                "url": "https://api.github.com/repos/aliyun/openapi-sdk-php/zipball/b545972ebdbaec015ef83db51b96baf38802a589",
+                "reference": "b545972ebdbaec015ef83db51b96baf38802a589",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -224,6 +224,7 @@
                 "alibabacloud/dds": "self.version",
                 "alibabacloud/dm": "self.version",
                 "alibabacloud/dmsenterprise": "self.version",
+                "alibabacloud/dnsknocker": "self.version",
                 "alibabacloud/domain": "self.version",
                 "alibabacloud/domainintl": "self.version",
                 "alibabacloud/drcloud": "self.version",
@@ -255,6 +256,7 @@
                 "alibabacloud/imm": "self.version",
                 "alibabacloud/industrybrain": "self.version",
                 "alibabacloud/iot": "self.version",
+                "alibabacloud/iqa": "self.version",
                 "alibabacloud/itaas": "self.version",
                 "alibabacloud/ivision": "self.version",
                 "alibabacloud/ivpd": "self.version",
@@ -362,7 +364,7 @@
                 "library",
                 "sdk"
             ],
-            "time": "2019-10-09T09:27:40+00:00"
+            "time": "2019-10-22T07:19:15+00:00"
         },
         {
             "name": "anam/phantomjs-linux-x86-binary",
@@ -2477,16 +2479,16 @@
         },
         {
             "name": "ibrand/common",
-            "version": "v1.2.11",
+            "version": "v1.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guojiangclub/common.git",
-                "reference": "56a076b4c86730cbfb8f2ae234bfcf8b379d3aab"
+                "reference": "7cbe205aac5e96ad58b36f68baaf11a1ad3eba8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guojiangclub/common/zipball/56a076b4c86730cbfb8f2ae234bfcf8b379d3aab",
-                "reference": "56a076b4c86730cbfb8f2ae234bfcf8b379d3aab",
+                "url": "https://api.github.com/repos/guojiangclub/common/zipball/7cbe205aac5e96ad58b36f68baaf11a1ad3eba8a",
+                "reference": "7cbe205aac5e96ad58b36f68baaf11a1ad3eba8a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2540,7 +2542,7 @@
                 "ibrand",
                 "server"
             ],
-            "time": "2019-05-22T07:00:25+00:00"
+            "time": "2019-10-18T06:45:45+00:00"
         },
         {
             "name": "ibrand/discount",
@@ -3006,16 +3008,16 @@
         },
         {
             "name": "ibrand/pay",
-            "version": "v0.1.1",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guojiangclub/pay.git",
-                "reference": "4d8419dcbea621307896adb85397412dab471a81"
+                "reference": "af77e5ef1014fd8215d8a9e259ef5f53c79af630"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guojiangclub/pay/zipball/4d8419dcbea621307896adb85397412dab471a81",
-                "reference": "4d8419dcbea621307896adb85397412dab471a81",
+                "url": "https://api.github.com/repos/guojiangclub/pay/zipball/af77e5ef1014fd8215d8a9e259ef5f53c79af630",
+                "reference": "af77e5ef1014fd8215d8a9e259ef5f53c79af630",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3067,7 +3069,7 @@
                 "ibrand",
                 "pay"
             ],
-            "time": "2018-12-29T03:37:46+00:00"
+            "time": "2019-10-09T11:46:51+00:00"
         },
         {
             "name": "ibrand/setting",
@@ -4676,16 +4678,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.55",
+            "version": "1.0.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "33c91155537c6dc899eacdc54a13ac6303f156e6"
+                "reference": "0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/33c91155537c6dc899eacdc54a13ac6303f156e6",
-                "reference": "33c91155537c6dc899eacdc54a13ac6303f156e6",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a",
+                "reference": "0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4762,7 +4764,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-08-24T11:17:19+00:00"
+            "time": "2019-10-16T21:01:05+00:00"
         },
         {
             "name": "league/fractal",
@@ -5148,16 +5150,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.39.0",
+            "version": "1.39.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "dd62a58af4e0775a45ea5f99d0363d81b7d9a1e0"
+                "reference": "4be0c005164249208ce1b5ca633cd57bdd42ff33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/dd62a58af4e0775a45ea5f99d0363d81b7d9a1e0",
-                "reference": "dd62a58af4e0775a45ea5f99d0363d81b7d9a1e0",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4be0c005164249208ce1b5ca633cd57bdd42ff33",
+                "reference": "4be0c005164249208ce1b5ca633cd57bdd42ff33",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5211,7 +5213,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-06-11T09:07:59+00:00"
+            "time": "2019-10-14T05:51:36+00:00"
         },
         {
             "name": "nexmo/client",
@@ -5326,16 +5328,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "60a97fff133b1669a5b1776aa8ab06db3f3962b7"
+                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/60a97fff133b1669a5b1776aa8ab06db3f3962b7",
-                "reference": "60a97fff133b1669a5b1776aa8ab06db3f3962b7",
+                "url": "https://api.github.com/repos/opis/closure/zipball/e79f851749c3caa836d7ccc01ede5828feb762c7",
+                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5389,7 +5391,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2019-09-02T21:07:33+00:00"
+            "time": "2019-10-19T18:38:51+00:00"
         },
         {
             "name": "overtrue/easy-sms",
@@ -10294,16 +10296,16 @@
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.15.0",
+            "version": "v1.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07"
+                "reference": "6c4277f6117e4864966c9cb58fb835cee8c74a1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
-                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/6c4277f6117e4864966c9cb58fb835cee8c74a1e",
+                "reference": "6c4277f6117e4864966c9cb58fb835cee8c74a1e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -10313,12 +10315,12 @@
                 ]
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.6",
                 "psr/log": "^1.0",
-                "symfony/var-dumper": "^2.6|^3.0|^4.0"
+                "symfony/var-dumper": "^2.6|^3|^4"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0|^5.0"
+                "phpunit/phpunit": "^5"
             },
             "suggest": {
                 "kriswallsmith/assetic": "The best way to manage assets",
@@ -10328,7 +10330,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-master": "1.15-dev"
                 }
             },
             "autoload": {
@@ -10357,7 +10359,7 @@
                 "debug",
                 "debugbar"
             ],
-            "time": "2017-12-15T11:13:46+00:00"
+            "time": "2019-09-24T14:55:42+00:00"
         },
         {
             "name": "mockery/mockery",

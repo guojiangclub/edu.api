@@ -69,7 +69,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->commands([InstallCommand::class,BuildVipPlan::class, SetUserVip::class,SetAdvert::class]);
 
-        Event::subscribe('iBrand\Edu\Core\Listeners\Notifications\NotificationsListener');
+        //Event::subscribe('iBrand\Edu\Core\Listeners\Notifications\NotificationsListener');
     }
 
     public function register()
