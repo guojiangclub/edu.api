@@ -214,6 +214,8 @@ class CourseController extends Controller
 
             $course['user_id'] = isset(auth('admin')->user()->id)?auth('admin')->user()->id:0;
 
+            $course['recommended_seq']=0;
+
             if(!empty($course['about'])){
                 $regex = "/src=\"\/uploads\/ueditor\/php\//";
                 $num_matches = preg_replace($regex, 'src="' . $request->server()['HTTP_ORIGIN'] . '/uploads/ueditor/php/', $course['about']);
@@ -261,7 +263,7 @@ class CourseController extends Controller
 
                     $this->courseTeacherRepository->create(['user_id'=>$user->id,
 
-                        'name'=>$user->nick_name,'course_id'=>$course->id,'avatar'=>$user->avatar_file]);
+                        'name'=>$user->nick_name,'course_id'=>$course->id,'avatar'=>$user->avatar]);
 
                 }
             }
@@ -273,6 +275,8 @@ class CourseController extends Controller
         } catch (\Exception $e) {
 
             DB::rollBack();
+
+            \Log::info($e);
 
             return $this->ajaxJson(false, [], 400,'保存失败');
 
@@ -346,7 +350,7 @@ class CourseController extends Controller
 
                     $this->courseTeacherRepository->create(['user_id'=>$user->id,
 
-                        'name'=>$user->nick_name,'course_id'=>$course->id,'avatar'=>$user->avatar_file]);
+                        'name'=>$user->nick_name,'course_id'=>$course->id,'avatar'=>$user->avatar]);
 
                 }
             }
@@ -358,6 +362,8 @@ class CourseController extends Controller
         } catch (\Exception $e) {
 
             DB::rollBack();
+
+            \Log::info($e);
 
             return $this->ajaxJson(false, [], 400,'保存失败');
 
