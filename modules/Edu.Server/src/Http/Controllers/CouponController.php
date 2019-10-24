@@ -79,6 +79,12 @@ class CouponController extends Controller
 
         $coupon=$this->discountService->getCouponConvert($discount->code,request()->user()->id);
 
+        if(isset($coupon['error'])){
+
+            return $this->failed($coupon['error'],[],400);
+        }
+
+
         return $this->success($coupon);
     }
 }

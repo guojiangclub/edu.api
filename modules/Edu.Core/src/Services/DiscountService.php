@@ -24,7 +24,6 @@ use iBrand\Component\Discount\Repositories\CouponRepository;
 use iBrand\Component\Discount\Repositories\DiscountRepository;
 use iBrand\Edu\Core\Discount\Checkers\DiscountEligibilityChecker;
 use iBrand\Edu\Core\Discount\Contracts\DiscountItemContract;
-use App\Exceptions\ApiException;
 
 class DiscountService
 {
@@ -121,17 +120,14 @@ class DiscountService
     {
 
         $discount = $this->getCouponByCode($couponCode, $user_id);
-
         if (!$discount) {
-            throw new ApiException('该优惠券码不存');
+            $coupon['error']='该优惠券码不存';
         }
-
         if ($discount->has_get) {
-            throw new ApiException('您已经领取过该优惠券');
+            $coupon['error']='您已经领取过该优惠券';
         }
-
         if ($discount->has_max) {
-            throw new ApiException('该优惠券已领完库存不足');
+            $coupon['error']='该优惠券已领完库存不足';
         }
 
         $coupon = $this->getCouponsByUserID($user_id, $discount);
