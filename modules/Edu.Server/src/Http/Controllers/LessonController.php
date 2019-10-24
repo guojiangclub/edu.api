@@ -33,42 +33,30 @@ class LessonController extends Controller
 
         $lesson = $this->lesson->find($id);
 
-        $vod = null;
+        $vod=null;
 
-        $vod_auth = null;
+        $vod_auth=null;
 
-        $vod_info = null;
+        if(!empty($lesson->media_id)){
 
-        if (!empty($lesson->media_id)) {
+            $play=AliyunVod::getPlayInfo($lesson->media_id);
 
-            $play = AliyunVod::getPlayInfo($lesson->media_id);
+            if(!isset($play['errorMessage'])){
 
-            if (!isset($play['errorMessage'])) {
-
-                $vod = $play->toArray();
+                $vod=$play->toArray();
             }
 
-            $play_auth = AliyunVod::getVideoPlayAuth($lesson->media_id);
+            $play_auth=AliyunVod::getVideoPlayAuth($lesson->media_id);
 
-            if (!isset($play_auth['errorMessage'])) {
+            if(!isset($play_auth['errorMessage'])){
 
-                $vod_auth = $play_auth->toArray();
+                $vod_auth=$play_auth->toArray();
             }
-            
-            $vod_info = AliyunVod::getMezzanineInfo($lesson->media_id);
-
-            if (!isset($play_auth['errorMessage'])) {
-
-                $vod_info = $play_auth->toArray();
-            }
-
         }
 
-        $lesson->vod = $vod;
+        $lesson->vod=$vod;
 
-        $lesson->vod_auth = $vod_auth;
-
-        $lesson->vod_info = $vod_info;
+        $lesson->vod_auth=$vod_auth;
 
         if ($lesson->free) {
             return $this->success($lesson);
