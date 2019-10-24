@@ -122,12 +122,15 @@ class DiscountService
         $discount = $this->getCouponByCode($couponCode, $user_id);
         if (!$discount) {
             $coupon['error']='该优惠券码不存';
+            return $coupon;
         }
         if ($discount->has_get) {
             $coupon['error']='您已经领取过该优惠券';
+            return $coupon;
         }
         if ($discount->has_max) {
             $coupon['error']='该优惠券已领完库存不足';
+            return $coupon;
         }
 
         $coupon = $this->getCouponsByUserID($user_id, $discount);
