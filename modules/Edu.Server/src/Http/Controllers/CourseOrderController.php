@@ -171,7 +171,7 @@ class CourseOrderController extends Controller
         }
 
         $chargeModel = ChargeModel::create([
-            'app' => 'default'
+            'app' => 'edu'
             , 'type' => 'default'
             , 'channel' => $channel
             , 'order_no' => $sn
