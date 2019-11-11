@@ -1,11 +1,19 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace GuoJiangClub\Edu\Backend\Services;
 
-
-use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
-use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
 
 class CourseService
 {
@@ -22,16 +30,14 @@ class CourseService
         $this->courseLessonRepository = $courseLessonRepository;
 
         $this->courseChapterRepository = $courseChapterRepository;
-
     }
-
 
     public function getCourseItems($courseId)
     {
         $lessons = $this->courseLessonRepository->getLessonsByCourseId($courseId);
         $chapters = $this->courseChapterRepository->getChaptersByCourseId($courseId);
 
-        $items = array();
+        $items = [];
         foreach ($lessons as $lesson) {
             $lesson['itemType'] = 'lesson';
             $items["lesson-{$lesson['id']}"] = $lesson;
@@ -45,6 +51,7 @@ class CourseService
         uasort($items, function ($item1, $item2) {
             return $item1['seq'] > $item2['seq'];
         });
+
         return $items;
     }
 
@@ -52,12 +59,14 @@ class CourseService
     {
         $data['number'] = $this->getNextChapterNumber($data['course_id']);
         $data['seq'] = $this->getNextCourseItemSeq($data['course_id']);
+
         return $this->courseChapterRepository->create($data);
     }
 
     public function getNextChapterNumber($courseId)
     {
         $counter = $this->courseChapterRepository->getChapterCountByCourseId($courseId);
+
         return $counter + 1;
     }
 
@@ -65,6 +74,7 @@ class CourseService
     {
         $chapterMaxSeq = $this->courseChapterRepository->getChapterMaxSeqByCourseId($courseId);
         $lessonMaxSeq = $this->courseLessonRepository->getLessonMaxSeqByCourseId($courseId);
+
         return ($chapterMaxSeq > $lessonMaxSeq ? $chapterMaxSeq : $lessonMaxSeq) + 1;
     }
 
@@ -83,16 +93,16 @@ class CourseService
         }
 
         $lessonId = $chapterId = $seq = 0;
-        $currentChapter = array('id' => 0);
+        $currentChapter = ['id' => 0];
 
         foreach ($itemIds as $itemId) {
-            $seq++;
-            list($type,) = explode('-', $itemId);
+            ++$seq;
+            list($type) = explode('-', $itemId);
             switch ($type) {
                 case 'lesson':
                     $lessonId++;
                     $item = $items[$itemId];
-                    $fields = array('number' => $lessonId, 'seq' => $seq, 'chapter_id' => $currentChapter['id']);
+                    $fields = ['number' => $lessonId, 'seq' => $seq, 'chapter_id' => $currentChapter['id']];
                     if ($fields['number'] != $item['number'] or $fields['seq'] != $item['seq'] or $fields['chapter_id'] != $item['chapter_id']) {
                         $this->courseLessonRepository->update($fields, $item['id']);
                     }
@@ -100,7 +110,7 @@ class CourseService
                 case 'chapter':
                     $chapterId++;
                     $item = $currentChapter = $items[$itemId];
-                    $fields = array('number' => $chapterId, 'seq' => $seq);
+                    $fields = ['number' => $chapterId, 'seq' => $seq];
                     if ($fields['number'] != $item['number'] or $fields['seq'] != $item['seq']) {
                         $this->courseChapterRepository->update($fields, $item['id']);
                     }
@@ -114,7 +124,6 @@ class CourseService
         return $this->courseLessonRepository->getLessonCountByCourseId($courseId) + 1;
     }
 
-
     public function createLesson(array $data)
     {
         $course = $this->courseRepository->find($data['course_id']);
@@ -122,7 +131,7 @@ class CourseService
             throw \Exception('添加课时失败，课程不存在。');
         }
 
-        $data['status'] = $course->status == 'published' ? 1 : 0;
+        $data['status'] = 'published' == $course->status ? 1 : 0;
         $data['user_id'] = auth('admin')->user()->id;
         $data['number'] = $this->getNextLessonNumber($data['course_id']);
         $data['seq'] = $this->getNextCourseItemSeq($data['course_id']);
@@ -132,6 +141,4 @@ class CourseService
 
         return $lesson;
     }
-    
-
 }

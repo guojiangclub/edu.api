@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,9 +11,9 @@
 
 namespace GuoJiangClub\Edu\Core\Console;
 
-use Illuminate\Console\Command;
-use GuoJiangClub\Edu\Backend\Seeds\EduBackendMenuSeeder;
 use DB;
+use GuoJiangClub\Edu\Backend\Seeds\EduBackendMenuSeeder;
+use Illuminate\Console\Command;
 
 class InstallCommand extends Command
 {
@@ -38,8 +38,7 @@ class InstallCommand extends Command
 
         $this->call('passport:keys');
 
-        if(!DB::table(config('admin.database.menu_table'))->where('title','在线教育')->first()){
-
+        if (!DB::table(config('admin.database.menu_table'))->where('title', '在线教育')->first()) {
             $this->call('db:seed', ['--class' => EduBackendMenuSeeder::class]);
         }
 

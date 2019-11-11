@@ -1,18 +1,22 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
-use DB;
-use Carbon\Carbon;
-use iBrand\Backend\Http\Controllers\Controller;
-use GuoJiangClub\Edu\Backend\Models\Course;
-use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
-use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
-use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
-use Encore\Admin\Facades\Admin as LaravelAdmin;
-use Encore\Admin\Layout\Content;
-use Illuminate\Http\Request;
 use GuoJiangClub\Edu\Backend\Services\CourseService;
+use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
+use iBrand\Backend\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CourseChapterController extends Controller
 {
@@ -25,8 +29,7 @@ class CourseChapterController extends Controller
     protected $courseService;
 
     public function __construct(CourseRepository $courseRepository, CourseLessonRepository $courseLessonRepository,
-        CourseService $courseService
-        ,CourseChapterRepository $courseChapterRepository)
+        CourseService $courseService, CourseChapterRepository $courseChapterRepository)
     {
         $this->courseRepository = $courseRepository;
 
@@ -34,8 +37,7 @@ class CourseChapterController extends Controller
 
         $this->courseChapterRepository = $courseChapterRepository;
 
-        $this->courseService=$courseService;
-
+        $this->courseService = $courseService;
     }
 
     public function create($courseId)
@@ -44,7 +46,6 @@ class CourseChapterController extends Controller
 
         return view('edu-backend::lesson.modal.chapter-modal', compact('courseId'));
     }
-
 
     public function edit($chapterId)
     {
@@ -62,6 +63,7 @@ class CourseChapterController extends Controller
         } else {
             $item = $this->courseChapterRepository->update($request->except(['_token', 'chapterId']), request('chapterId'));
         }
+
         return view('edu-backend::lesson.includes.chapter-item', compact('item'));
     }
 
@@ -71,8 +73,4 @@ class CourseChapterController extends Controller
 
         return $this->ajaxJson(true, 0, '', []);
     }
-
-
-
-
 }

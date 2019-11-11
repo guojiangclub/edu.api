@@ -1,24 +1,29 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
-
-use iBrand\Backend\Http\Controllers\Controller;
-use GuoJiangClub\Edu\Backend\Repositories\CourseOrderRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
+use GuoJiangClub\Edu\Backend\Repositories\CourseOrderRepository;
+use iBrand\Backend\Http\Controllers\Controller;
 
 class CourseOrderController extends Controller
 {
-
-
     protected $courseOrderRepository;
 
     public function __construct(CourseOrderRepository $courseOrderRepository)
     {
         $this->courseOrderRepository = $courseOrderRepository;
     }
-
 
     public function index()
     {
@@ -30,7 +35,6 @@ class CourseOrderController extends Controller
         $orders = $this->courseOrderRepository->getOrdersPaginate($where, $userwhere, $coursewhere);
 
         return LaravelAdmin::content(function (Content $content) use ($orders) {
-
             $content->header('订单管理');
 
             $content->breadcrumb(
@@ -40,16 +44,13 @@ class CourseOrderController extends Controller
 
             $content->body(view('edu-backend::course_order.index', compact('orders')));
         });
-
     }
 
     public function show($id)
     {
-
         $order = $this->courseOrderRepository->find($id);
 
         return LaravelAdmin::content(function (Content $content) use ($order) {
-
             $content->header('订单管理');
 
             $content->breadcrumb(
@@ -88,16 +89,14 @@ class CourseOrderController extends Controller
         }
 
         if (!empty(request('field'))) {
-
-            if (request('field') == 'title') {
-                $coursewhere[request('field')] = ['like', '%' . request('value') . '%'];
-            } elseif(request('field') == 'sn'){
-                $where[request('field')] = ['like', '%' . request('value') . '%'];
+            if ('title' == request('field')) {
+                $coursewhere[request('field')] = ['like', '%'.request('value').'%'];
+            } elseif ('sn' == request('field')) {
+                $where[request('field')] = ['like', '%'.request('value').'%'];
             } else {
-                $userwhere[request('field')] = ['like', '%' . request('value') . '%'];
+                $userwhere[request('field')] = ['like', '%'.request('value').'%'];
             }
         }
-
 
         return [$where, $userwhere, $coursewhere];
     }

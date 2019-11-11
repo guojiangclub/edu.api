@@ -1,19 +1,25 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace GuoJiangClub\Edu\Backend\Models;
 
 class DiscountAction extends \iBrand\Component\Discount\Models\Action
 {
-
     public function setConfigurationAttribute($value)
     {
         $type = $this->attributes['type'];
 
-        if($type == 'course_order_fixed_discount')
-        {
+        if ('course_order_fixed_discount' == $type) {
             $this->attributes['configuration'] = json_encode(['amount' => $value * 100]);
         } else {
-
             $this->attributes['configuration'] = json_encode(['percentage' => $value]);
         }
     }
@@ -23,27 +29,24 @@ class DiscountAction extends \iBrand\Component\Discount\Models\Action
         $value = json_decode($this->attributes['configuration'], true);
         $keys = array_keys($value);
 
-        foreach ($keys as $val)
-        {
-            if($val == 'amount')
-            {
+        foreach ($keys as $val) {
+            if ('amount' == $val) {
                 return $value['amount'] / 100;
-            }else{
-                return $value['percentage'];
             }
-        }
 
+            return $value['percentage'];
+        }
     }
 
     public function getActionTypeAttribute()
     {
         $type = '';
-        switch ($this->type){
+        switch ($this->type) {
             case 'order_fixed_discount':
-                $type='订单减金额';
+                $type = '订单减金额';
                 break;
             case 'order_percentage_discount':
-                $type='订单打折';
+                $type = '订单打折';
                 break;
 //            case 'goods_fixed_discount':
 //                $type='商品减金额';
@@ -59,12 +62,13 @@ class DiscountAction extends \iBrand\Component\Discount\Models\Action
 //            case 'course_order_fixed_discount':
 //                $type='商品积分';
             case 'course_order_fixed_discount':
-                $type='课程订单减金额';
+                $type = '课程订单减金额';
                 break;
             case 'course_order_percentage_discount':
-                $type='课程订单打折';
+                $type = '课程订单打折';
                 break;
         }
+
         return $type;
     }
 
@@ -75,14 +79,12 @@ class DiscountAction extends \iBrand\Component\Discount\Models\Action
 
         $keys = array_keys($value);
 
-        foreach ($keys as $val)
-        {
-            if($val == 'amount')
-            {
+        foreach ($keys as $val) {
+            if ('amount' == $val) {
                 return $type.($value['amount'] / 100).'元';
-            }else{
-                return $type.$value['percentage'].'%';
             }
+
+            return $type.$value['percentage'].'%';
         }
     }
 }

@@ -1,18 +1,24 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
-use DB;
-use Carbon\Carbon;
-use iBrand\Backend\Http\Controllers\Controller;
-use GuoJiangClub\Edu\Backend\Models\Course;
-use GuoJiangClub\Edu\Backend\Repositories\CourseRepository;
-use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
-use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
-use Illuminate\Http\Request;
+use GuoJiangClub\Edu\Backend\Repositories\CourseRepository;
 use GuoJiangClub\Edu\Backend\Services\CourseService;
+use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
+use iBrand\Backend\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CourseLessonController extends Controller
 {
@@ -24,11 +30,8 @@ class CourseLessonController extends Controller
 
     protected $courseService;
 
-    public function __construct(CourseRepository $courseRepository, CourseLessonRepository $courseLessonRepository
-        , CourseChapterRepository $courseChapterRepository
-        , CourseService $courseService
-    )
-    {
+    public function __construct(CourseRepository $courseRepository, CourseLessonRepository $courseLessonRepository, CourseChapterRepository $courseChapterRepository, CourseService $courseService
+    ) {
         $this->courseRepository = $courseRepository;
 
         $this->courseLessonRepository = $courseLessonRepository;
@@ -36,45 +39,39 @@ class CourseLessonController extends Controller
         $this->courseChapterRepository = $courseChapterRepository;
 
         $this->courseService = $courseService;
-
     }
 
     public function index($id)
     {
-
         $course = $this->courseRepository->find($id);
 
-        $courseItems= $this->courseService->getCourseItems($id);
-
+        $courseItems = $this->courseService->getCourseItems($id);
 
         return LaravelAdmin::content(function (Content $content) use ($courseItems, $course) {
-
             $content->header('课时管理');
 
             $content->breadcrumb(
                 ['text' => '所有课程', 'url' => 'edu/course/list', 'no-pjax' => 1],
                 ['text' => '课时管理', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '所有课程']
-
             );
 
             $content->body(view('edu-backend::lesson.index', compact('courseItems', 'course')));
         });
-
     }
 
     public function create($courseId)
     {
         $lesson = '';
+
         return view('edu-backend::lesson.modal.lesson-modal', compact('courseId', 'lesson'));
     }
-
 
     public function edit($courseId, $lessonId)
     {
         $lesson = $this->courseLessonRepository->find($lessonId);
+
         return view('edu-backend::lesson.modal.lesson-modal', compact('lesson', 'courseId'));
     }
-
 
     public function store($courseId, Request $request)
     {
@@ -89,9 +86,9 @@ class CourseLessonController extends Controller
         } else {
             $item = $this->courseLessonRepository->update($data, request('lessonId'));
         }
+
         return view('edu-backend::lesson.includes.lesson-item', compact('item'));
     }
-
 
     public function delete($id)
     {
@@ -104,22 +101,24 @@ class CourseLessonController extends Controller
         return $this->ajaxJson(true, 0, '', []);
     }
 
-
     public function publish($id)
     {
         $item = $this->courseLessonRepository->update(['status' => 1], $id);
+
         return view('edu-backend::lesson.includes.lesson-item', compact('item'));
     }
 
     public function unpublish($id)
     {
         $item = $this->courseLessonRepository->update(['status' => 0], $id);
+
         return view('edu-backend::lesson.includes.lesson-item', compact('item'));
     }
 
     public function sort($id)
     {
         $this->courseService->sortCourseItems($id, request('ids'));
+
         return $this->ajaxJson(true);
     }
 
@@ -127,6 +126,4 @@ class CourseLessonController extends Controller
     {
         return intval($minutes) * 60 + intval($seconds);
     }
-
-
 }

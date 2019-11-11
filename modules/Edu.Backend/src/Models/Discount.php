@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace GuoJiangClub\Edu\Backend\Models;
 
 use Carbon\Carbon;
@@ -9,7 +18,6 @@ class Discount extends \iBrand\Component\Discount\Models\Discount
 {
     protected $appends = ['status_text'];
 
-
     public function getDiscountActionAttribute()
     {
         return $this->discountActions()->where('type', '<>', 'goods_times_point')->first();
@@ -18,9 +26,7 @@ class Discount extends \iBrand\Component\Discount\Models\Discount
     public function getDiscountPointActionAttribute()
     {
         return $this->discountActions()->where('type', 'goods_times_point')->first();
-
     }
-
 
     public function getDiscountItemTotalAttribute()
     {
@@ -57,22 +63,21 @@ class Discount extends \iBrand\Component\Discount\Models\Discount
         return $this->discountRules()->where('type', 'contains_wechat_group')->first();
     }
 
-
     public function getStatusTextAttribute()
     {
         $start = $this->starts_at;
         $end = $this->ends_at;
         $status = $this->status;
 
-        if ($start > Carbon::now() AND $status == 1) {
+        if ($start > Carbon::now() and 1 == $status) {
             return '活动未开始';
         }
 
-        if ($start <= Carbon::now() AND $end > Carbon::now() AND $status == 1) {
+        if ($start <= Carbon::now() and $end > Carbon::now() and 1 == $status) {
             return '活动进行中';
         }
 
-        if ($status == 0 OR $end < Carbon::now()) {
+        if (0 == $status or $end < Carbon::now()) {
             return '活动已结束';
         }
 
@@ -103,6 +108,4 @@ class Discount extends \iBrand\Component\Discount\Models\Discount
     {
         return $this->usage_limit + $this->used;
     }
-
-
 }

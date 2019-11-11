@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-server.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,23 +12,22 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use iBrand\Component\Discount\Applicators\DiscountApplicator;
-use iBrand\Component\Discount\Repositories\CouponRepository;
+use GuoJiangClub\Common\Controllers\Controller;
 use GuoJiangClub\Component\Pay\Facades\Charge;
 use GuoJiangClub\Component\Pay\Facades\PayNotify;
+use GuoJiangClub\Component\Pay\Models\Charge as ChargeModel;
 use GuoJiangClub\Edu\Core\Applicators\VipApplicator;
 use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
 use GuoJiangClub\Edu\Core\Processes\CourseOrderProcess;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseOrderRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
 use GuoJiangClub\Edu\Core\Repositories\UserDetailsRepository;
 use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
-use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
-use GuoJiangClub\Edu\Core\Services\DiscountService;
-use GuoJiangClub\Component\Pay\Models\Charge as ChargeModel;
-use GuoJiangClub\Common\Controllers\Controller;
 use GuoJiangClub\Edu\Core\Services\CourseService;
-
+use GuoJiangClub\Edu\Core\Services\DiscountService;
+use iBrand\Component\Discount\Applicators\DiscountApplicator;
+use iBrand\Component\Discount\Repositories\CouponRepository;
 
 class CourseOrderController extends Controller
 {
@@ -56,8 +55,8 @@ class CourseOrderController extends Controller
         $this->discountApplicator = $discountApplicator;
         $this->details = $detailsRepository;
         $this->vipMember = $vipMemberRepository;
-        $this->member=$courseMemberRepository;
-        $this->courseService=$courseService;
+        $this->member = $courseMemberRepository;
+        $this->courseService = $courseService;
     }
 
     public function create()
@@ -73,7 +72,7 @@ class CourseOrderController extends Controller
         $course = $this->course->find($courseId);
 
         $order = $this->order->create(['sn' => build_order_no('E'), 'status' => 'created', 'course_id' => $courseId,
-            'items_total' => $course->price, 'total' => $course->price, 'user_id' => $user->id, 'title' => $course->title,]);
+            'items_total' => $course->price, 'total' => $course->price, 'user_id' => $user->id, 'title' => $course->title, ]);
 
         if (0 === $order->total && $userDetails) {
             $needPay = false;
@@ -89,7 +88,6 @@ class CourseOrderController extends Controller
         $freeCourseCount = 0;
 
         if ($isVip) {
-
             $useCount = CourseOrderAdjustment::where('origin_type', 'vip')->where('origin_id', $vipMember->id)->whereHas('order', function ($query) {
                 $query->where('status', 'paid');
             })->get()->count();
@@ -146,7 +144,6 @@ class CourseOrderController extends Controller
         $type = 'charge';
 
         if (0 === $order->total) {
-
             $order = app(CourseOrderProcess::class)->paid($order);
 
             $type = 'paid';
@@ -154,40 +151,24 @@ class CourseOrderController extends Controller
             return $this->success(compact('type', 'needPay', 'order'));
         }
 
-
         $channel = request('channel') ?? 'wx_lite';
 
-        if ($channel == 'wx_lite') {
-            $charge = Charge::create(['channel' => request('channel') ?? 'wx_lite'
-                , 'order_no' => $sn
-                , 'amount' => $order->total
-                , 'client_ip' => \request()->getClientIp()
-                , 'subject' => $order->title
-                , 'body' => $order->title
-                , 'extra' => ['openid' => \request('openid')],
+        if ('wx_lite' == $channel) {
+            $charge = Charge::create(['channel' => request('channel') ?? 'wx_lite', 'order_no' => $sn, 'amount' => $order->total, 'client_ip' => \request()->getClientIp(), 'subject' => $order->title, 'body' => $order->title, 'extra' => ['openid' => \request('openid')],
             ]);
 
             return $this->success(compact('type', 'charge', 'order'));
         }
 
         $chargeModel = ChargeModel::create([
-            'app' => 'edu'
-            , 'type' => 'default'
-            , 'channel' => $channel
-            , 'order_no' => $sn
-            , 'client_ip' => request()->getClientIp()
-            , 'amount' => $order->total
-            , 'subject' => $order->title
-            , 'body' => $order->title
-            , 'extra' => request('extra')
-
+            'app' => 'edu', 'type' => 'default', 'channel' => $channel, 'order_no' => $sn, 'client_ip' => request()->getClientIp(), 'amount' => $order->total, 'subject' => $order->title, 'body' => $order->title, 'extra' => request('extra'),
         ]);
 
-        if ($channel == 'wx_pub') {
+        if ('wx_pub' == $channel) {
             $redirectUrl = route('payment.wechat.getCode', ['charge_id' => $chargeModel->charge_id]);
         }
 
-        if ($channel == 'alipay_wap') {
+        if ('alipay_wap' == $channel) {
             $redirectUrl = route('payment.alipay.pay', ['charge_id' => $chargeModel->charge_id]);
         }
 
@@ -212,10 +193,10 @@ class CourseOrderController extends Controller
             return $this->failed('订单不存在');
         }
         if ($user->cant('update', $order)) {
-            return $this->failed('无权操作.',['order' => $order]);
+            return $this->failed('无权操作.', ['order' => $order]);
         }
 
-        if ($order->status != 'paid') {
+        if ('paid' != $order->status) {
             $payRecords = \GuoJiangClub\Component\Pay\Models\Charge::ofPaidOrderNo($order_no)->get();
             if ($payRecords->count() > 0 && $payRecords->sum('amount') >= $order->total) {
                 $order->status = 'paid';
@@ -225,7 +206,6 @@ class CourseOrderController extends Controller
             }
         }
         if ('paid' == $order->status) {
-
             $coteries = null;
 
             $this->courseService->becomeStudent($order);
@@ -233,7 +213,7 @@ class CourseOrderController extends Controller
             return $this->success(['order' => $order, 'payment' => '微信支付', 'coteries' => $coteries]);
         }
 
-         return $this->success(['order' => $order]);
+        return $this->success(['order' => $order]);
     }
 
     private function getOrderCoupons($order, $user)

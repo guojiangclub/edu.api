@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -217,10 +217,8 @@ class CourseMemberRepositoryEloquent extends BaseRepository implements CourseMem
         })->with(['course', 'course.teacher'])->orderBy('created_at', 'desc')->paginate($limit);
     }
 
-
-    public function getAllCourseIdsByUser($id){
-
-        return $this->model->where('user_id',$id)->pluck('course_id')->toArray();
+    public function getAllCourseIdsByUser($id)
+    {
+        return $this->model->where('user_id', $id)->pluck('course_id')->toArray();
     }
-
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 class VipPlan extends Model implements DiscountItemContract
 {
     use HasFormatAttributesTrait;
- 
+
     protected $guarded = ['id'];
 
     protected $table = 'vip_plan';

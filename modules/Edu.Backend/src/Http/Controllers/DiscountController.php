@@ -1,33 +1,32 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/14
- * Time: 19:34
+
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
-
-use iBrand\Backend\Http\Controllers\Controller;
+use Carbon\Carbon;
+use DB;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
-use GuoJiangClub\Edu\Backend\Repositories\DiscountRepository;
+use GuoJiangClub\Edu\Backend\Models\Discount;
+use GuoJiangClub\Edu\Backend\Models\DiscountAction;
+use GuoJiangClub\Edu\Backend\Models\DiscountRule;
 use GuoJiangClub\Edu\Backend\Repositories\CouponRepository;
 use GuoJiangClub\Edu\Backend\Repositories\CourseOrderAdjustmentRepository;
-use Carbon\Carbon;
-use GuoJiangClub\Edu\Backend\Models\DiscountAction;
-use GuoJiangClub\Edu\Backend\Models\Discount;
-use GuoJiangClub\Edu\Backend\Models\DiscountRule;
-use Validator;
+use GuoJiangClub\Edu\Backend\Repositories\DiscountRepository;
+use iBrand\Backend\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
-
+use Validator;
 
 class DiscountController extends Controller
 {
-
-
     protected $discountRepository;
 
     protected $courseOrderAdjustmentRepository;
@@ -36,14 +35,12 @@ class DiscountController extends Controller
 
     public function __construct(
         DiscountRepository $discountRepository, CourseOrderAdjustmentRepository $courseOrderAdjustmentRepository, CouponRepository $couponRepository
-    )
-    {
+    ) {
         $this->discountRepository = $discountRepository;
 
         $this->courseOrderAdjustmentRepository = $courseOrderAdjustmentRepository;
 
         $this->couponRepository = $couponRepository;
-
     }
 
     public function index()
@@ -59,13 +56,11 @@ class DiscountController extends Controller
         $coupons = $this->discountRepository->getDiscountList($where, $orWhere);
 
         return LaravelAdmin::content(function (Content $content) use ($coupons) {
-
             $content->header('优惠券列表');
 
             $content->breadcrumb(
                 ['text' => '优惠券管理', 'url' => '/edu/discount/list', 'no-pjax' => 1],
                 ['text' => '优惠券列表', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '优惠券管理']
-
             );
 
             $content->body(view('edu-backend::discount.coupon.index', compact('coupons')));
@@ -74,18 +69,15 @@ class DiscountController extends Controller
 
     public function create()
     {
-
         $discount = new Discount();
         $roles = DiscountRule::all();
 
         return LaravelAdmin::content(function (Content $content) use ($discount, $roles) {
-
             $content->header('新增优惠券');
 
             $content->breadcrumb(
                 ['text' => '优惠券管理', 'url' => 'edu/discount/list', 'no-pjax' => 1],
                 ['text' => '新增优惠券', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '优惠券管理']
-
             );
 
             $content->body(view('edu-backend::discount.coupon.create', compact('discount', 'roles')));
@@ -98,28 +90,24 @@ class DiscountController extends Controller
         $roles = DiscountRule::all();
 
         return LaravelAdmin::content(function (Content $content) use ($discount, $roles) {
-
             $content->header('编辑优惠券');
 
             $content->breadcrumb(
                 ['text' => '优惠券管理', 'url' => 'edu/discount/list', 'no-pjax' => 1],
                 ['text' => '编辑优惠券', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '优惠券管理']
-
             );
 
             $content->body(view('edu-backend::discount.coupon.edit', compact('discount', 'roles')));
         });
     }
 
-
     /**
-     * 使用记录
+     * 使用记录.
      *
      * @return mixed
      */
     public function useRecord()
     {
-
         $id = request('id');
         $limit = request('limit') ? request('limit') : 15;
         $condition = $this->usedCondition();
@@ -128,36 +116,29 @@ class DiscountController extends Controller
         $userwhere = $condition[2];
         $orderwhere = $condition[3];
 
-        $couponLists=$this->couponRepository->findWhere(['discount_id'=>$id]);
+        $couponLists = $this->couponRepository->findWhere(['discount_id' => $id]);
 
-        $origin_id=[];
+        $origin_id = [];
 
-        if($couponLists->count()){
-
-            foreach ($couponLists as $item){
-
-                $origin_id[]=$item->id;
+        if ($couponLists->count()) {
+            foreach ($couponLists as $item) {
+                $origin_id[] = $item->id;
             }
         }
 
-        $coupons = $this->courseOrderAdjustmentRepository->getOrderAdjustmentHistory($where, $time, $userwhere, $orderwhere, $limit, $origin_type = ['coupon'],$origin_id);
-
+        $coupons = $this->courseOrderAdjustmentRepository->getOrderAdjustmentHistory($where, $time, $userwhere, $orderwhere, $limit, $origin_type = ['coupon'], $origin_id);
 
         return LaravelAdmin::content(function (Content $content) use ($coupons, $id) {
-
             $content->header('使用记录');
 
             $content->breadcrumb(
                 ['text' => '优惠券管理', 'url' => 'edu/discount/list', 'no-pjax' => 1],
                 ['text' => '使用记录', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '优惠券管理']
-
             );
 
             $content->body(view('edu-backend::discount.coupon.use_record', compact('coupons', 'id')));
         });
-
     }
-
 
     public function showCoupons()
     {
@@ -171,19 +152,15 @@ class DiscountController extends Controller
         $coupons = $this->couponRepository->getCouponsPaginated($where, $time, $userwhere, $limit);
 
         return LaravelAdmin::content(function (Content $content) use ($coupons, $id) {
-
             $content->header('领取记录');
 
             $content->breadcrumb(
                 ['text' => '优惠券管理', 'url' => 'edu/discount/list', 'no-pjax' => 1],
                 ['text' => '领取记录', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => '优惠券管理']
-
             );
             $content->body(view('edu-backend::discount.coupon.show', compact('coupons', 'id')));
         });
-
     }
-
 
     private function getCouponCondition()
     {
@@ -195,8 +172,8 @@ class DiscountController extends Controller
             $where['discount_id'] = $id;
         }
 
-        if (!empty(request('field'))){
-            $userwhere[request('field')] = ['like', '%' . request('value') . '%'];
+        if (!empty(request('field'))) {
+            $userwhere[request('field')] = ['like', '%'.request('value').'%'];
         }
 
         if (!empty(request('etime')) && !empty(request('stime'))) {
@@ -211,9 +188,9 @@ class DiscountController extends Controller
         if (!empty(request('stime'))) {
             $time['created_at'] = ['>=', request('stime')];
         }
+
         return [$time, $where, $userwhere];
     }
-
 
     private function usedCondition()
     {
@@ -223,12 +200,11 @@ class DiscountController extends Controller
         $orderwhere = [];
 
         if (!empty(request('field'))) {
-            if (request('field') == 'sn') {
-                $orderwhere[request('field')] = ['like', '%' . request('value') . '%'];
+            if ('sn' == request('field')) {
+                $orderwhere[request('field')] = ['like', '%'.request('value').'%'];
             } else {
-                $userwhere[request('field')] = ['like', '%' . request('value') . '%'];
+                $userwhere[request('field')] = ['like', '%'.request('value').'%'];
             }
-
         }
 
         if (!empty(request('etime')) && !empty(request('stime'))) {
@@ -245,9 +221,9 @@ class DiscountController extends Controller
         }
 
         $orderwhere['status'] = 'paid';
+
         return [$time, $where, $userwhere, $orderwhere];
     }
-
 
     private function getCondition()
     {
@@ -255,31 +231,30 @@ class DiscountController extends Controller
         $where['channel'] = 'ec';
         $orWhere = [];
         $status = request('status');
-        if ($status == 'nstart') {
+        if ('nstart' == $status) {
             $where['status'] = 1;
             $where['starts_at'] = ['>', Carbon::now()];
         }
 
-        if ($status == 'ing') {
+        if ('ing' == $status) {
             $where['status'] = 1;
             $where['starts_at'] = ['<=', Carbon::now()];
             $where['ends_at'] = ['>', Carbon::now()];
         }
 
-        if ($status == 'end') {
+        if ('end' == $status) {
             $where['ends_at'] = ['<', Carbon::now()];
 
             $orWhere['coupon_based'] = 1;
             $orWhere['status'] = 0;
         }
 
-        if (request('title') != '') {
-            $where['title'] = ['like', '%' . request('title') . '%'];
+        if ('' != request('title')) {
+            $where['title'] = ['like', '%'.request('title').'%'];
         }
 
         return [$where, $orWhere];
     }
-
 
     public function store(Request $request)
     {
@@ -290,16 +265,19 @@ class DiscountController extends Controller
 
         $base['label'] = $base['label'] ? $base['label'] : '';
 
-        if (!$base['usestart_at']) unset($base['usestart_at']);
+        if (!$base['usestart_at']) {
+            unset($base['usestart_at']);
+        }
 
         $validator = $this->validationForm();
         if ($validator->fails()) {
             $warnings = $validator->messages();
             $show_warning = $warnings->first();
+
             return $this->ajaxJson(false, [], 404, $show_warning);
         }
 
-        if (!$action['configuration'] AND !$point_action['configuration']) {
+        if (!$action['configuration'] and !$point_action['configuration']) {
             return $this->ajaxJson(false, [], 404, '请至少设置一种优惠动作');
         }
 
@@ -312,40 +290,38 @@ class DiscountController extends Controller
             DB::commit();
 
             return $this->ajaxJson(true, [], 0, '');
-
         } catch (\Exception $exception) {
             DB::rollBack();
             \Log::info($exception);
+
             return $this->ajaxJson(false, [], 404, '保存失败');
         }
-
     }
-
 
     protected function validationForm()
     {
-        $rules = array(
+        $rules = [
             'base.title' => 'required',
             'base.code' => 'required',
             'base.usage_limit' => 'required | integer',
             'base.starts_at' => 'required | date',
             'base.ends_at' => 'required | date | after:base.starts_at',
-        );
-        $message = array(
-            "required" => ":attribute 不能为空",
-            "base.ends_at.after" => ':attribute 不能早于领取开始时间',
-            "base.useend_at.after" => ':attribute 不能早于领取截止时间',
-            "integer" => ':attribute 必须是整数'
-        );
+        ];
+        $message = [
+            'required' => ':attribute 不能为空',
+            'base.ends_at.after' => ':attribute 不能早于领取开始时间',
+            'base.useend_at.after' => ':attribute 不能早于领取截止时间',
+            'integer' => ':attribute 必须是整数',
+        ];
 
-        $attributes = array(
-            "base.title" => '优惠券名称',
-            "base.code" => '兑换码',
-            "base.usage_limit" => '发放总量',
-            "base.starts_at" => '开始时间',
-            "base.ends_at" => '领取截止时间',
-            "base.useend_at" => '使用截止时间'
-        );
+        $attributes = [
+            'base.title' => '优惠券名称',
+            'base.code' => '兑换码',
+            'base.usage_limit' => '发放总量',
+            'base.starts_at' => '开始时间',
+            'base.ends_at' => '领取截止时间',
+            'base.useend_at' => '使用截止时间',
+        ];
 
         $validator = Validator::make(
             request()->all(),
@@ -361,11 +337,9 @@ class DiscountController extends Controller
         return $validator;
     }
 
-
     public function saveData($base, $action, $rules, $coupon_base, $agent_ids = '')
     {
         if ($id = request('id')) { //修改
-
             $discount = Discount::find($id);
             $discount->fill($base);
             $discount->save();
@@ -414,12 +388,11 @@ class DiscountController extends Controller
                 $addPointAction['discount_id'] = $discount->id;
                 DiscountAction::create($addPointAction);
             }
-
         }
 
         //rules
         $filterRules = $this->filterDiscountRules($rules);
-        if (count($filterRules) == 0) {
+        if (0 == count($filterRules)) {
             return false;
         }
         foreach ($filterRules as $key => $val) {
@@ -435,7 +408,7 @@ class DiscountController extends Controller
     }
 
     /**
-     * 过滤活动规则
+     * 过滤活动规则.
      *
      * @param $data
      *
@@ -443,35 +416,34 @@ class DiscountController extends Controller
      */
     public function filterDiscountRules($data)
     {
-
         foreach ($data as $key => $val) {
             if (!isset($val['type'])) {
                 unset($data[$key]);
                 continue;
             }
 
-            if (isset($val['type']) AND !is_array($val) AND empty($val)) {
+            if (isset($val['type']) and !is_array($val) and empty($val)) {
                 unset($data[$key]);
                 continue;
             }
 
-            if ($val['type'] == 'contains_product' AND empty($val['value']['sku']) AND empty($val['value']['spu'])) {
+            if ('contains_product' == $val['type'] and empty($val['value']['sku']) and empty($val['value']['spu'])) {
                 unset($data[$key]);
                 continue;
             }
 
-            if ($val['type'] == 'contains_category' AND (!isset($val['value']['items']) || count($val['value']['items']) == 0)) {
+            if ('contains_category' == $val['type'] and (!isset($val['value']['items']) || 0 == count($val['value']['items']))) {
                 unset($data[$key]);
                 continue;
             }
 
-            if ($val['type'] == 'contains_shops' AND count($val['value']['shop_id']) == 0) {
+            if ('contains_shops' == $val['type'] and 0 == count($val['value']['shop_id'])) {
                 unset($data[$key]);
                 continue;
             }
         }
 
-        if (count($data) == 0) {
+        if (0 == count($data)) {
             //return ['status' => false, 'message' => '请至少设置一种规则'];
             return [];
         }

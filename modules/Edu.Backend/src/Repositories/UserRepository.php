@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace GuoJiangClub\Edu\Backend\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -26,15 +35,13 @@ class UserRepository extends BaseRepository
             }
 
             return $query->orderBy('updated_at', 'desc');
-
         });
 
-        if ($limit == 0) {
+        if (0 == $limit) {
             return $query->all();
-        } else {
-            return $query->paginate($limit);
         }
 
+        return $query->paginate($limit);
     }
 
     public function getUserByLoginName($loginName)
@@ -48,7 +55,7 @@ class UserRepository extends BaseRepository
         if (is_mobile($loginName)) {
             return $this->findByField('mobile', $loginName)->first();
         }
+
         return $this->findByField('user_name', $loginName)->first();
     }
-
 }

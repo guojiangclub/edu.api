@@ -1,13 +1,15 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/14
- * Time: 16:47
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-namespace GuoJiangClub\Edu\Backend\Seeds;
 
+namespace GuoJiangClub\Edu\Backend\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -137,7 +139,7 @@ class EduBackendMenuSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
-       
+
         DB::table(config('admin.database.menu_table'))->insertGetId([
             'parent_id' => $parent_svip,
             'order' => $lastOrder++,

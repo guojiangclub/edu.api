@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-server.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,16 +11,16 @@
 
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
-use iBrand\Component\Discount\Repositories\CouponRepository;
+use GuoJiangClub\Common\Controllers\Controller;
+use GuoJiangClub\Common\Wechat\Platform\Services\MiniProgramService;
 use GuoJiangClub\Component\User\Repository\UserRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseTeacherRepository;
 use GuoJiangClub\Edu\Core\Repositories\UserDetailsRepository;
 use GuoJiangClub\Edu\Core\Services\CourseService;
 use GuoJiangClub\Edu\Server\Resources\Coupon;
 use GuoJiangClub\Sms\Facade as Sms;
-use GuoJiangClub\Common\Wechat\Platform\Services\MiniProgramService;
-use GuoJiangClub\Common\Controllers\Controller;
-use GuoJiangClub\Edu\Core\Repositories\CourseTeacherRepository;
+use iBrand\Component\Discount\Repositories\CouponRepository;
 
 class UserController extends Controller
 {
@@ -32,14 +32,14 @@ class UserController extends Controller
     protected $miniProgramService;
     protected $teacher;
 
-    public function __construct(UserDetailsRepository $userDetailsRepository, CourseMemberRepository $memberRepository, UserRepository $userRepository, CouponRepository $couponRepository,MiniProgramService $miniProgramService,CourseTeacherRepository $teacherRepository)
+    public function __construct(UserDetailsRepository $userDetailsRepository, CourseMemberRepository $memberRepository, UserRepository $userRepository, CouponRepository $couponRepository, MiniProgramService $miniProgramService, CourseTeacherRepository $teacherRepository)
     {
         $this->details = $userDetailsRepository;
         $this->member = $memberRepository;
         $this->user = $userRepository;
         $this->coupon = $couponRepository;
-        $this->miniProgramService=$miniProgramService;
-        $this->teacher=$teacherRepository;
+        $this->miniProgramService = $miniProgramService;
+        $this->teacher = $teacherRepository;
     }
 
     public function me()
@@ -48,26 +48,24 @@ class UserController extends Controller
 
         $coupons = $this->coupon->findActiveByUser($user->id);
 
-        return $this->success(compact('user','coupons'));
+        return $this->success(compact('user', 'coupons'));
     }
 
     public function teacher($id)
     {
+        $course_id = request('course_id');
 
-        $course_id=request('course_id');
+        $user = $this->teacher->with('details')->findByField(['user_id' => $id, 'course_id' => $course_id])->first();
 
-        $user=$this->teacher->with('details')->findByField(['user_id'=>$id,'course_id'=>$course_id])->first();
-
-        if($user){
-
-            $user->avatar=getHellobiAvatar($user->avatar);
+        if ($user) {
+            $user->avatar = getHellobiAvatar($user->avatar);
         }
 
         //$user= $this->user->findByField('id',$id)->first();
 
         $members = app(CourseService::class)->getCoursesByTeacher($id);
 
-        $coteries=null;
+        $coteries = null;
 
         return $this->success(compact('user', 'members', 'coteries'));
     }
@@ -94,7 +92,7 @@ class UserController extends Controller
             return $this->failed('验证码错误');
         }
 
-        $this->user->update(['mobile'=>$mobile],$user->id);
+        $this->user->update(['mobile' => $mobile], $user->id);
 
         return $this->success();
     }
@@ -116,29 +114,24 @@ class UserController extends Controller
         return $this->paginator($coupons, Coupon::class);
     }
 
+    public function coterie($id)
+    {
+        $user = null;
 
-    public function coterie($id){
+        $coterie = null;
 
-        $user=null;
-
-        $coterie=null;
-
-        if(!$coterie){
-
+        if (!$coterie) {
             return $this->success();
-
         }
 
-        $user= $this->user->findByField('id',$coterie->user_id)->first();
+        $user = $this->user->findByField('id', $coterie->user_id)->first();
 
-        $scene=$id.'_';
+        $scene = $id.'_';
 
         $pages = request('pages') ? request('pages') : 'pages/index/index/index';
 
-        $mini_code = platform_application()->createMiniQrcode(config('ibrand.wechat.mini_program.coterie.app_id') ,$pages, 800, $scene, 'share_coterie_content',$storage = 'public', client_id());
+        $mini_code = platform_application()->createMiniQrcode(config('ibrand.wechat.mini_program.coterie.app_id'), $pages, 800, $scene, 'share_coterie_content', $storage = 'public', client_id());
 
-        return $this->success(['coterie'=>$coterie,'user'=>$user,'mini_code'=>$mini_code]);
-
-
+        return $this->success(['coterie' => $coterie, 'user' => $user, 'mini_code' => $mini_code]);
     }
 }

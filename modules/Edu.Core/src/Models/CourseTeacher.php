@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,8 +11,8 @@
 
 namespace GuoJiangClub\Edu\Core\Models;
 
-use iBrand\Component\User\Models\User;
 use GuoJiangClub\Edu\Core\Models\Relations\BelongsToCourseTrait;
+use iBrand\Component\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class CourseTeacher extends Model
@@ -35,7 +35,7 @@ class CourseTeacher extends Model
 
     public function details()
     {
-        return $this->belongsTo(UserDetails::class,'user_id','user_id');
+        return $this->belongsTo(UserDetails::class, 'user_id', 'user_id');
     }
 
     public function course()

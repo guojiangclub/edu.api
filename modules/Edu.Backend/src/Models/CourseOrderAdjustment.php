@@ -1,16 +1,22 @@
 <?php
 
-namespace GuoJiangClub\Edu\Backend\Models;
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+namespace GuoJiangClub\Edu\Backend\Models;
 
 class CourseOrderAdjustment extends \GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment
 {
-
     public function getOrderAdjustmentHistory($where, $limit = 50, $time = [])
     {
-
-        if(isset($where['order_no'])){
-            $order_no=$where['sn'];
+        if (isset($where['order_no'])) {
+            $order_no = $where['sn'];
             unset($where['order_no']);
         }
 
@@ -38,23 +44,20 @@ class CourseOrderAdjustment extends \GuoJiangClub\Edu\Core\Models\CourseOrderAdj
             }
         }
 
-        if(isset($order_no[1])){
+        if (isset($order_no[1])) {
             $query = $query
                 ->whereHas('order', function ($query) use ($order_no) {
-                    return $query->where('sn','like',$order_no[1]);
+                    return $query->where('sn', 'like', $order_no[1]);
                 })
                 ->with('order.user')->orderBy('created_at', 'desc');
-        }else{
+        } else {
             $query = $query->with('order')->with('order.user')->orderBy('created_at', 'desc');
         }
 
-
-        if ($limit == 0) {
+        if (0 == $limit) {
             return $query->all();
-        } else {
-            return $query->paginate($limit);
         }
 
-
+        return $query->paginate($limit);
     }
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,12 +23,11 @@ class CoursePaidNotify implements PayNotifyContract
 
     protected $courseService;
 
-    public function __construct(CourseOrderRepository $orderRepository,CourseService $courseService)
+    public function __construct(CourseOrderRepository $orderRepository, CourseService $courseService)
     {
         $this->order = $orderRepository;
 
-        $this->courseService=$courseService;
-
+        $this->courseService = $courseService;
     }
 
     public function success(Charge $charge)

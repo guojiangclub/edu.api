@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -36,7 +36,7 @@ interface CourseRepository extends RepositoryInterface
      */
     public function findActiveCourse($id);
 
-    public function searchCoursesByTitle($title, $sort = 'updated_at',$limit = 15,$status=null);
+    public function searchCoursesByTitle($title, $sort = 'updated_at', $limit = 15, $status = null);
 
     public function searchCourses($conditions, $sort = 'latest', $start = 0, $limit = 15);
 
@@ -54,5 +54,5 @@ interface CourseRepository extends RepositoryInterface
 
     public function gerUserCourse($id, $perPage = 15);
 
-    public function getDiscountCourses($limit =15);
+    public function getDiscountCourses($limit = 15);
 }

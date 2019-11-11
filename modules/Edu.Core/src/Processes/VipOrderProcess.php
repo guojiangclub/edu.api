@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,7 +22,7 @@ class VipOrderProcess
     protected $order;
 
     public function __construct(
-        VipMemberRepository $vipMemberRepository, VipOrderRepository $vipOrderRepository )
+        VipMemberRepository $vipMemberRepository, VipOrderRepository $vipOrderRepository)
     {
         $this->member = $vipMemberRepository;
         $this->order = $vipOrderRepository;
@@ -30,17 +30,16 @@ class VipOrderProcess
 
     public function paid(VipOrder $order)
     {
+        $order = $order->with('plan')->first();
 
-        $order=$order->with('plan')->first();
+        $order->status = 2;
 
-        $order->status=2;
-
-        $order->paid_at=Carbon::now();
+        $order->paid_at = Carbon::now();
 
         $this->member->create(['plan_id' => $order->plan_id, 'user_id' => $order->user_id,
-            'order_id' => $order->id,'joined_at'=>Carbon::now(),'deadline'=>Carbon::now()->addDays($order->plan->days)]);
+            'order_id' => $order->id, 'joined_at' => Carbon::now(), 'deadline' => Carbon::now()->addDays($order->plan->days), ]);
 
-        $order->plan->increment('member_count',1);
+        $order->plan->increment('member_count', 1);
 
         $order->plan->save();
 

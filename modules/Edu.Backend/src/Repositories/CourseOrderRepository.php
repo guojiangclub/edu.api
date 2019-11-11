@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace GuoJiangClub\Edu\Backend\Repositories;
 
@@ -13,9 +21,9 @@ class CourseOrderRepository extends BaseRepository
         return CourseOrder::class;
     }
 
-    public function getOrdersPaginate($where, $userwhere, $coursewhere,$limit = 15)
+    public function getOrdersPaginate($where, $userwhere, $coursewhere, $limit = 15)
     {
-        $query= $this->scopeQuery(function ($query) use ($where, $userwhere, $coursewhere) {
+        $query = $this->scopeQuery(function ($query) use ($where, $userwhere, $coursewhere) {
             if (count($where) > 0) {
                 foreach ($where as $key => $value) {
                     if (is_array($value)) {
@@ -40,8 +48,8 @@ class CourseOrderRepository extends BaseRepository
                 });
             }
 
-            if (count( $coursewhere) > 0) {
-                $query = $query->whereHas('course', function ($query) use ( $coursewhere) {
+            if (count($coursewhere) > 0) {
+                $query = $query->whereHas('course', function ($query) use ($coursewhere) {
                     foreach ($coursewhere as $key => $value) {
                         if (is_array($value)) {
                             list($operate, $va) = $value;
@@ -54,19 +62,14 @@ class CourseOrderRepository extends BaseRepository
             }
 
             return $query->orderBy('created_at', 'desc');
-
         });
-
 
         $query->with('course')->with('user');
 
-        if ($limit == 0) {
+        if (0 == $limit) {
             return $query->all();
-        } else {
-            return $query->paginate($limit);
         }
 
+        return $query->paginate($limit);
     }
-
-
 }

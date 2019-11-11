@@ -1,22 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/14
- * Time: 19:47
+
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
-
-use iBrand\Backend\Http\Controllers\Controller;
-use GuoJiangClub\Edu\Backend\Repositories\VipOrderRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
+use GuoJiangClub\Edu\Backend\Repositories\VipOrderRepository;
+use iBrand\Backend\Http\Controllers\Controller;
 
 class SvipOrderController extends Controller
 {
-
     protected $vipOrderRepository;
 
     public function __construct(VipOrderRepository $vipOrderRepository)
@@ -27,13 +28,12 @@ class SvipOrderController extends Controller
     public function index()
     {
         $conditions = $this->conditions();
-        $where=$conditions[0];
-        $andWhere=$conditions[1];
+        $where = $conditions[0];
+        $andWhere = $conditions[1];
 
-        $orders = $this->vipOrderRepository->getOrdersPaginate($where,$andWhere);
+        $orders = $this->vipOrderRepository->getOrdersPaginate($where, $andWhere);
 
         return LaravelAdmin::content(function (Content $content) use ($orders) {
-
             $content->header('SVIP订单管理');
 
             $content->breadcrumb(
@@ -43,7 +43,6 @@ class SvipOrderController extends Controller
 
             $content->body(view('edu-backend::vip_order.index', compact('orders')));
         });
-
     }
 
     protected function conditions()
@@ -59,8 +58,9 @@ class SvipOrderController extends Controller
         }
 
         if (request('user_name')) {
-            $andWhere['user_name'] = ['like', '%' . request('user_name') . '%'];
+            $andWhere['user_name'] = ['like', '%'.request('user_name').'%'];
         }
+
         return [$where, $andWhere];
     }
 
@@ -69,7 +69,6 @@ class SvipOrderController extends Controller
         $order = $this->vipOrderRepository->find($id);
 
         return LaravelAdmin::content(function (Content $content) use ($order) {
-
             $content->header('SVIP订单管理');
 
             $content->breadcrumb(
@@ -79,6 +78,5 @@ class SvipOrderController extends Controller
 
             $content->body(view('edu-backend::vip_order.show', compact('order')));
         });
-
     }
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,9 +11,10 @@
 
 namespace GuoJiangClub\Edu\Core\Services;
 
-
-use Exception;
 use Carbon\Carbon;
+use Exception;
+use GuoJiangClub\Edu\Core\Discount\Checkers\DiscountEligibilityChecker;
+use GuoJiangClub\Edu\Core\Discount\Contracts\DiscountItemContract;
 use iBrand\Component\Discount\Applicators\DiscountApplicator;
 use iBrand\Component\Discount\Checkers\CouponEligibilityChecker;
 use iBrand\Component\Discount\Checkers\DatesEligibilityChecker;
@@ -22,8 +23,6 @@ use iBrand\Component\Discount\Models\Coupon;
 use iBrand\Component\Discount\Models\Discount;
 use iBrand\Component\Discount\Repositories\CouponRepository;
 use iBrand\Component\Discount\Repositories\DiscountRepository;
-use GuoJiangClub\Edu\Core\Discount\Checkers\DiscountEligibilityChecker;
-use GuoJiangClub\Edu\Core\Discount\Contracts\DiscountItemContract;
 
 class DiscountService
 {
@@ -118,25 +117,26 @@ class DiscountService
 
     public function getCouponConvert($couponCode, $user_id)
     {
-
         $discount = $this->getCouponByCode($couponCode, $user_id);
         if (!$discount) {
-            $coupon['error']='该优惠券码不存';
+            $coupon['error'] = '该优惠券码不存';
+
             return $coupon;
         }
         if ($discount->has_get) {
-            $coupon['error']='您已经领取过该优惠券';
+            $coupon['error'] = '您已经领取过该优惠券';
+
             return $coupon;
         }
         if ($discount->has_max) {
-            $coupon['error']='该优惠券已领完库存不足';
+            $coupon['error'] = '该优惠券已领完库存不足';
+
             return $coupon;
         }
 
         $coupon = $this->getCouponsByUserID($user_id, $discount);
 
         return $coupon;
-
     }
 
     public function getCouponByCode($coupon_code, $user_id)
@@ -158,8 +158,9 @@ class DiscountService
             })
             ->first();
 
-
-        if (!$data) return null;
+        if (!$data) {
+            return null;
+        }
 
         $coupon_data = Coupon::where('discount_id', $data->id);
 
@@ -168,12 +169,10 @@ class DiscountService
         $coupons = $coupon_data->count();
 
         if ($coupon >= $data->per_usage_limit) {
-
             $data->has_get = true;
         }
 
         if ($data->usage_limit <= 0 || $coupons >= $data->usage_limit) {
-
             $data->has_max = true;
         }
 
@@ -182,7 +181,9 @@ class DiscountService
 
     public function getCouponsByUserID($user_id, $discount)
     {
-        if (!isset($discount->usage_limit) || $discount->usage_limit < 1) return false;
+        if (!isset($discount->usage_limit) || $discount->usage_limit < 1) {
+            return false;
+        }
 
         $input['user_id'] = $user_id;
         $input['discount_id'] = $discount->id;
@@ -198,13 +199,11 @@ class DiscountService
         $coupon = $this->couponRepository->create($input);
 
         if ($coupon) {
-
             Discount::where(['id' => $discount->id])->decrement('usage_limit');
 
             Discount::where(['id' => $discount->id])->increment('used');
 
             return $coupon;
-
         }
 
         return false;

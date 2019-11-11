@@ -1,13 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/28
- * Time: 18:15
+
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace GuoJiangClub\Edu\Backend\Repositories;
-
 
 use GuoJiangClub\Edu\Backend\Models\VipOrder;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -47,7 +49,6 @@ class VipOrderRepository extends BaseRepository
             }
 
             return $query->orderBy('created_at', 'desc');
-
         })->with(['plan', 'user'])->paginate($limit);
     }
 
@@ -55,5 +56,4 @@ class VipOrderRepository extends BaseRepository
     {
         return $this->with('plan')->findByField('order_no', $order_no)->first();
     }
-
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-server.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,10 +11,10 @@
 
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
-use iBrand\Component\Discount\Repositories\CouponRepository;
-use iBrand\Component\Discount\Repositories\DiscountRepository;
 use GuoJiangClub\Common\Controllers\Controller;
 use GuoJiangClub\Edu\Core\Services\DiscountService;
+use iBrand\Component\Discount\Repositories\CouponRepository;
+use iBrand\Component\Discount\Repositories\DiscountRepository;
 
 class CouponController extends Controller
 {
@@ -23,11 +23,11 @@ class CouponController extends Controller
     private $discountService;
 
     public function __construct(
-        CouponRepository $couponRepository, DiscountRepository $discountRepository,DiscountService $discountService
+        CouponRepository $couponRepository, DiscountRepository $discountRepository, DiscountService $discountService
     ) {
         $this->couponRepository = $couponRepository;
         $this->discountRepository = $discountRepository;
-        $this->discountService=$discountService;
+        $this->discountService = $discountService;
     }
 
     public function create()
@@ -47,7 +47,7 @@ class CouponController extends Controller
 
         $actionType = request('action_type');
 
-        if (str_contains($actionType,'fixed')) {
+        if (str_contains($actionType, 'fixed')) {
             $actionData = ['amount' => request('action_value')];
         } else {
             $actionData = ['percentage' => request('action_value')];
@@ -77,13 +77,11 @@ class CouponController extends Controller
             return $this->failed('非优惠券，无法领取');
         }
 
-        $coupon=$this->discountService->getCouponConvert($discount->code,request()->user()->id);
+        $coupon = $this->discountService->getCouponConvert($discount->code, request()->user()->id);
 
-        if(isset($coupon['error'])){
-
-            return $this->failed($coupon['error'],[],400);
+        if (isset($coupon['error'])) {
+            return $this->failed($coupon['error'], [], 400);
         }
-
 
         return $this->success($coupon);
     }

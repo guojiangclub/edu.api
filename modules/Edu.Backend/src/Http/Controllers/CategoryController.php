@@ -1,18 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2019/1/14
- * Time: 18:41
+
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
-
-use iBrand\Backend\Http\Controllers\Controller;
-use GuoJiangClub\Edu\Backend\Models\Category;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
+use GuoJiangClub\Edu\Backend\Models\Category;
+use iBrand\Backend\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,22 +37,18 @@ class CategoryController extends Controller
                 $title = '课程方向';
         }
 
-        $categories = Category::where('groupId', $group_id)->orderBy('weight','desc')->paginate(15);
-
+        $categories = Category::where('groupId', $group_id)->orderBy('weight', 'desc')->paginate(15);
 
         return LaravelAdmin::content(function (Content $content) use ($categories, $group_id, $title) {
-
-            $content->header($title . '管理');
+            $content->header($title.'管理');
 
             $content->breadcrumb(
-                ['text' => $title . '管理', 'url' => '', 'no-pjax' => 1],
-                ['text' => $title . '列表', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => $title]
+                ['text' => $title.'管理', 'url' => '', 'no-pjax' => 1],
+                ['text' => $title.'列表', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => $title]
             );
 
             $content->body(view('edu-backend::category.index', compact('categories', 'group_id', 'title')));
         });
-
-
     }
 
     public function create()
@@ -71,12 +69,11 @@ class CategoryController extends Controller
         }
 
         return LaravelAdmin::content(function (Content $content) use ($group_id, $title) {
-
-            $content->header($title . '管理');
+            $content->header($title.'管理');
 
             $content->breadcrumb(
-                ['text' => $title . '管理', 'url' => '', 'no-pjax' => 1],
-                ['text' => $title . '列表', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => $title]
+                ['text' => $title.'管理', 'url' => '', 'no-pjax' => 1],
+                ['text' => $title.'列表', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => $title]
             );
 
             $content->body(view('edu-backend::category.create', compact('group_id', 'title')));
@@ -99,13 +96,13 @@ class CategoryController extends Controller
             default:
                 $title = '课程方向';
         }
-        return LaravelAdmin::content(function (Content $content) use ($category, $title) {
 
-            $content->header($title . '管理');
+        return LaravelAdmin::content(function (Content $content) use ($category, $title) {
+            $content->header($title.'管理');
 
             $content->breadcrumb(
-                ['text' => $title . '管理', 'url' => '', 'no-pjax' => 1],
-                ['text' => $title . '列表', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => $title]
+                ['text' => $title.'管理', 'url' => '', 'no-pjax' => 1],
+                ['text' => $title.'列表', 'url' => '', 'no-pjax' => 1, 'left-menu-active' => $title]
             );
 
             $content->body(view('edu-backend::category.edit', compact('category', 'title')));
@@ -133,7 +130,6 @@ class CategoryController extends Controller
         }
 
         return $this->ajaxJson();
-
     }
 
     protected function validateForm($id = 0)
@@ -141,30 +137,31 @@ class CategoryController extends Controller
         $rules = [
             'name' => 'required',
             'code' => 'required',
-            'weight' => 'required|integer'
+            'weight' => 'required|integer',
         ];
 
         $message = [
-            "required" => ":attribute 不能为空",
-            "integer" => ":attribute 必须是整数",
-            "unique" => ":attribute 已经存在",
+            'required' => ':attribute 不能为空',
+            'integer' => ':attribute 必须是整数',
+            'unique' => ':attribute 已经存在',
         ];
 
         $attributes = [
-            "name" => '分类名称',
-            "code" => '编码',
-            "weight" => '排序'
+            'name' => '分类名称',
+            'code' => '编码',
+            'weight' => '排序',
         ];
 
         $validator = Validator::make(request()->all(), $rules, $message, $attributes);
 
-        $validator->sometimes('code', "unique:" . config('ibrand.app.database.prefix', 'ibrand_') . "edu_category,code,$id", function ($input) {
+        $validator->sometimes('code', 'unique:'.config('ibrand.app.database.prefix', 'ibrand_')."edu_category,code,$id", function ($input) {
             return $input->id;
         });
 
-        $validator->sometimes('code', "unique:" . config('ibrand.app.database.prefix', 'ibrand_') . "edu_category,code", function ($input) {
+        $validator->sometimes('code', 'unique:'.config('ibrand.app.database.prefix', 'ibrand_').'edu_category,code', function ($input) {
             return !$input->id;
         });
+
         return $validator;
     }
 
@@ -177,6 +174,7 @@ class CategoryController extends Controller
         }
 
         $category->delete();
+
         return $this->ajaxJson();
     }
 }

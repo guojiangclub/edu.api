@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,15 +11,16 @@
 
 namespace GuoJiangClub\Edu\Core\Models;
 
-use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
-use iBrand\Component\User\Models\User;
 use GuoJiangClub\Currency\Format\HasFormatAttributesTrait;
 use GuoJiangClub\Edu\Core\Models\Relations\BelongsToCourseTrait;
+use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
+use iBrand\Component\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class CourseOrder extends Model implements DiscountSubjectContract
 {
-    use BelongsToCourseTrait, HasFormatAttributesTrait;
+    use BelongsToCourseTrait;
+    use HasFormatAttributesTrait;
 
     protected $guarded = ['id'];
 
@@ -27,7 +28,7 @@ class CourseOrder extends Model implements DiscountSubjectContract
 
     public function __construct(array $attributes = [])
     {
-        $this->setTable(config('ibrand.app.database.prefix', 'ibrand_') . 'edu_course_order');
+        $this->setTable(config('ibrand.app.database.prefix', 'ibrand_').'edu_course_order');
 
         parent::__construct($attributes);
     }
@@ -60,7 +61,6 @@ class CourseOrder extends Model implements DiscountSubjectContract
         return $this->hasOne(CourseOrderAdjustment::class, 'order_id')
             ->where('type', 'order_discount')
             ->where('origin_type', 'coupon');
-
     }
 
     /**

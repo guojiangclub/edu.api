@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -30,23 +30,24 @@ function duration($value)
 {
     $minutes = intval($value / 60);
     $seconds = $value - $minutes * 60;
-    return sprintf('%02d', $minutes) . ':' . sprintf('%02d', $seconds);
+
+    return sprintf('%02d', $minutes).':'.sprintf('%02d', $seconds);
 }
 
 function secondsToText($value)
 {
     $minutes = intval($value / 60);
     $seconds = $value - $minutes * 60;
-    return array($minutes, $seconds);
+
+    return [$minutes, $seconds];
 }
 
 if (!function_exists('getHellobiAvatar')) {
-    function getHellobiAvatar($avatar){
-
+    function getHellobiAvatar($avatar)
+    {
         if (!empty($avatar)) {
-            $preg = "/^http(s)?:\\/\\/.+/";
-            if(preg_match($preg,$avatar))
-            {
+            $preg = '/^http(s)?:\\/\\/.+/';
+            if (preg_match($preg, $avatar)) {
                 return $avatar;
             }
         }
@@ -55,10 +56,10 @@ if (!function_exists('getHellobiAvatar')) {
             return 'https://cdn.ibrand.cc/avatar.png';
         }
         if (strstr($avatar, '000') && (!strstr($avatar, env('ASKSITE')))) {
-            return env('ASKSITE') . '/uploads/avatar/' . str_replace('min', 'max', $avatar);
+            return env('ASKSITE').'/uploads/avatar/'.str_replace('min', 'max', $avatar);
         }
 
-       return env('HOMESITE') . $avatar;
+        return env('HOMESITE').$avatar;
     }
 }
 
@@ -89,7 +90,7 @@ if (!function_exists('build_order_no')) {
 
 if (!function_exists('date_friendly')) {
     /**
-     * 时间友好型提示风格化（即微博中的XXX小时前、昨天等等）
+     * 时间友好型提示风格化（即微博中的XXX小时前、昨天等等）.
      *
      * 即微博中的 XXX 小时前、昨天等等, 时间超过 $time_limit 后返回按 out_format 的设定风格化时间戳
      *
@@ -98,34 +99,29 @@ if (!function_exists('date_friendly')) {
      * @param  string
      * @param  array
      * @param  int
+     *
      * @return string
      */
     function date_friendly($date, $time_limit = 604800, $out_format = 'Y-m-d H:i', $formats = null, $time_now = null)
     {
-
         if (!$date) {
             return false;
         }
 
         $timestamp = is_numeric($date) ? $date : strtotime($date);
 
-        if ($formats == null) {
-            $formats = array('YEAR' => '%s 年前'
-            , 'MONTH' => '%s 月前'
-            , 'DAY' => '%s 天前'
-            , 'HOUR' => '%s 小时前'
-            , 'MINUTE' => '%s 分钟前'
-            , 'SECOND' => '%s 秒前');
+        if (null == $formats) {
+            $formats = ['YEAR' => '%s 年前', 'MONTH' => '%s 月前', 'DAY' => '%s 天前', 'HOUR' => '%s 小时前', 'MINUTE' => '%s 分钟前', 'SECOND' => '%s 秒前'];
         }
 
-        $time_now = $time_now == null ? time() : $time_now;
+        $time_now = null == $time_now ? time() : $time_now;
         $seconds = $time_now - $timestamp;
 
-        if ($seconds == 0) {
+        if (0 == $seconds) {
             $seconds = 1;
         }
 
-        if (!$time_limit OR $seconds > $time_limit) {
+        if (!$time_limit or $seconds > $time_limit) {
             return date($out_format, $timestamp);
         }
 
@@ -156,22 +152,22 @@ if (!function_exists('date_friendly')) {
         $dateDiff = null;
 
         switch ($diffFormat) {
-            case 'YEAR' :
+            case 'YEAR':
                 $dateDiff = sprintf($formats[$diffFormat], $years);
                 break;
-            case 'MONTH' :
+            case 'MONTH':
                 $dateDiff = sprintf($formats[$diffFormat], $months);
                 break;
-            case 'DAY' :
+            case 'DAY':
                 $dateDiff = sprintf($formats[$diffFormat], $days);
                 break;
-            case 'HOUR' :
+            case 'HOUR':
                 $dateDiff = sprintf($formats[$diffFormat], $hours);
                 break;
-            case 'MINUTE' :
+            case 'MINUTE':
                 $dateDiff = sprintf($formats[$diffFormat], $minutes);
                 break;
-            case 'SECOND' :
+            case 'SECOND':
                 $dateDiff = sprintf($formats[$diffFormat], $seconds);
                 break;
         }

@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,9 +13,9 @@ namespace GuoJiangClub\Edu\Core\Processes;
 
 use Carbon\Carbon;
 use GuoJiangClub\Edu\Core\Models\CourseOrder;
-use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseOrderRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
 
 class CourseOrderProcess
 {
@@ -24,11 +24,11 @@ class CourseOrderProcess
     protected $order;
 
     public function __construct(
-        CourseOrderRepository $orderRepository, CourseMemberRepository $memberRepository,CourseRepository $courseRepository)
+        CourseOrderRepository $orderRepository, CourseMemberRepository $memberRepository, CourseRepository $courseRepository)
     {
         $this->member = $memberRepository;
         $this->order = $orderRepository;
-        $this->course=$courseRepository;
+        $this->course = $courseRepository;
     }
 
     public function paid(CourseOrder $order)
@@ -39,10 +39,10 @@ class CourseOrderProcess
 
         $this->course->update([
             'student_count' => $this->member->getMemberCountByCourseIdAndRole($order->course_id),
-            'income' => $this->order->sumOrderPriceByCourseId($order->course_id, array('paid', 'cancelled')),
+            'income' => $this->order->sumOrderPriceByCourseId($order->course_id, ['paid', 'cancelled']),
         ], $order->course_id);
 
-        event('edu.course.order.success.wechat.notification',$order);
+        event('edu.course.order.success.wechat.notification', $order);
 
         return $order;
     }

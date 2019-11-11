@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,18 +11,19 @@
 
 namespace GuoJiangClub\Edu\Core\Providers;
 
-use iBrand\Component\Discount\Contracts\AdjustmentContract;
-use iBrand\Component\User\Models\User as BaseUser;
-use GuoJiangClub\Edu\Core\Auth\User;
+use Event;
 use GuoJiangClub\Edu\Core\Console\BuildVipPlan;
-use GuoJiangClub\Edu\Core\Console\SetUserVip;
+use GuoJiangClub\Edu\Core\Console\InstallCommand;
 use GuoJiangClub\Edu\Core\Console\SetAdvert;
+use GuoJiangClub\Edu\Core\Console\SetUserVip;
 use GuoJiangClub\Edu\Core\Discount\Actions\CourseFixedDiscountAction;
 use GuoJiangClub\Edu\Core\Discount\Actions\CoursePercentageDiscountAction;
 use GuoJiangClub\Edu\Core\Models\CourseOrder;
 use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
+use GuoJiangClub\Edu\Core\Models\VipOrder;
 use GuoJiangClub\Edu\Core\PaidNotify\CoursePaidNotify;
 use GuoJiangClub\Edu\Core\Policies\CourseOrderPolicy;
+use GuoJiangClub\Edu\Core\Policies\VipOrderPolicy;
 use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseAnnouncementRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
@@ -47,18 +48,16 @@ use GuoJiangClub\Edu\Core\Repositories\Eloquent\UserDetailsRepositoryEloquent;
 use GuoJiangClub\Edu\Core\Repositories\Eloquent\VipMemberRepositoryEloquent;
 use GuoJiangClub\Edu\Core\Repositories\UserDetailsRepository;
 use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
+use iBrand\Component\Discount\Contracts\AdjustmentContract;
+use iBrand\Component\User\Models\User as BaseUser;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use GuoJiangClub\Edu\Core\Models\VipOrder;
-use GuoJiangClub\Edu\Core\Policies\VipOrderPolicy;
-use GuoJiangClub\Edu\Core\Console\InstallCommand;
-use Event;
 
 class AppServiceProvider extends ServiceProvider
 {
     protected $policies = [
         CourseOrder::class => CourseOrderPolicy::class,
-        VipOrder::class =>VipOrderPolicy::class,
+        VipOrder::class => VipOrderPolicy::class,
     ];
 
     public function boot()
@@ -67,7 +66,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(realpath(__DIR__.'/../../migrations'));
 
-        $this->commands([InstallCommand::class,BuildVipPlan::class, SetUserVip::class,SetAdvert::class]);
+        $this->commands([InstallCommand::class, BuildVipPlan::class, SetUserVip::class, SetAdvert::class]);
 
         //Event::subscribe('GuoJiangClub\Edu\Core\Listeners\Notifications\NotificationsListener');
     }
@@ -107,5 +106,4 @@ class AppServiceProvider extends ServiceProvider
             Gate::policy($key, $value);
         }
     }
-
 }

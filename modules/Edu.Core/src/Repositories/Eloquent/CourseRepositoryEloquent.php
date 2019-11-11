@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -55,7 +55,6 @@ class CourseRepositoryEloquent extends BaseRepository implements CourseRepositor
         return null;
     }
 
-
     public function searchCourses($conditions, $sort = 'latest', $start = 0, $limit = 10)
     {
         return $this->scopeQuery(function ($query) use ($sort, $start, $limit) {
@@ -63,30 +62,26 @@ class CourseRepositoryEloquent extends BaseRepository implements CourseRepositor
         })->findWhere($conditions);
     }
 
-
     /**
      * @param $title
      * @param string $sort
-     * @param int $limit
+     * @param int    $limit
+     *
      * @return mixed
      */
-    public function searchCoursesByTitle($title, $sort = 'updated_at', $limit = 15,$status=null)
+    public function searchCoursesByTitle($title, $sort = 'updated_at', $limit = 15, $status = null)
     {
-
         $query = $this->model;
 
         if (!empty($title)) {
-
-            $query = $query->where('title', 'like', '%' . $title . '%');
+            $query = $query->where('title', 'like', '%'.$title.'%');
         }
 
         if (!empty($status)) {
-
-            $query = $query->where('status',$status);
+            $query = $query->where('status', $status);
         }
 
         return $query->orderBy('recommended_time', 'desc')->orderBy($sort, 'desc')->with('teacher')->paginate($limit);
-
     }
 
     /**
@@ -95,7 +90,7 @@ class CourseRepositoryEloquent extends BaseRepository implements CourseRepositor
      * @param $categoryId
      * @param string $sort
      * @param string $order
-     * @param int $limit
+     * @param int    $limit
      *
      * @return mixed
      */

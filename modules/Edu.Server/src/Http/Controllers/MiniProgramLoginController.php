@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-server.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,10 +12,10 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use EasyWeChat;
+use GuoJiangClub\Common\Controllers\Controller;
 use GuoJiangClub\Component\User\Repository\UserBindRepository;
 use GuoJiangClub\Component\User\Repository\UserRepository;
 use GuoJiangClub\Component\User\UserService;
-use GuoJiangClub\Common\Controllers\Controller;
 
 class MiniProgramLoginController extends Controller
 {

@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,9 +11,9 @@
 
 namespace GuoJiangClub\Edu\Core\Discount\Checkers;
 
+use GuoJiangClub\Edu\Core\Discount\Contracts\DiscountItemContract;
 use iBrand\Component\Discount\Checkers\DiscountEligibilityChecker as BaseDiscountEligibilityChecker;
 use iBrand\Component\Discount\Contracts\DiscountContract;
-use GuoJiangClub\Edu\Core\Discount\Contracts\DiscountItemContract;
 
 class DiscountEligibilityChecker extends BaseDiscountEligibilityChecker
 {

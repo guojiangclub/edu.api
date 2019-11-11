@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-core.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,9 +27,8 @@ class VipOrderRepositoryEloquent extends BaseRepository implements VipOrderRepos
         return VipOrder::class;
     }
 
-    public function getOrderBySN($sn){
-
+    public function getOrderBySN($sn)
+    {
         return $this->with('plan')->findByField('order_no', $sn)->first();
     }
-
 }

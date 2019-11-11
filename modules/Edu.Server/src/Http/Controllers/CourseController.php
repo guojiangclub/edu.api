@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-server.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +12,9 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use iBrand\Component\Discount\Repositories\DiscountRepository;
+use GuoJiangClub\Common\Controllers\Controller;
+use GuoJiangClub\Component\User\Repository\UserRepository;
+use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
 use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseAnnouncementRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
@@ -21,10 +23,7 @@ use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
 use GuoJiangClub\Edu\Core\Services\CourseService;
 use GuoJiangClub\Edu\Server\Resources\Course;
 use GuoJiangClub\Edu\Server\Resources\CourseAnnouncement;
-use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
-use GuoJiangClub\Component\User\Repository\UserRepository;
-use GuoJiangClub\Common\Controllers\Controller;
-use GuoJiangClub\Edu\Core\Models\UserDetails;
+use iBrand\Component\Discount\Repositories\DiscountRepository;
 
 class CourseController extends Controller
 {
@@ -35,14 +34,8 @@ class CourseController extends Controller
     protected $announcement;
     protected $user;
 
-    public function __construct(CourseRepository $courseRepository
-        , CourseMemberRepository $courseMemberRepository
-        , DiscountRepository $discountRepository
-        , VipMemberRepository $vipMemberRepository
-        , CourseAnnouncementRepository $announcementRepository
-        , UserRepository $userRepository
-    )
-    {
+    public function __construct(CourseRepository $courseRepository, CourseMemberRepository $courseMemberRepository, DiscountRepository $discountRepository, VipMemberRepository $vipMemberRepository, CourseAnnouncementRepository $announcementRepository, UserRepository $userRepository
+    ) {
         $this->course = $courseRepository;
         $this->member = $courseMemberRepository;
         $this->discount = $discountRepository;
@@ -92,7 +85,6 @@ class CourseController extends Controller
             $isMember = true;
         }
 
-
         $isVip = false;
         $freeCourseCount = 0;
 
@@ -101,27 +93,25 @@ class CourseController extends Controller
             $isVip = $vipMember ? true : false;
 
             if ($isVip) {
-
                 $useCount = CourseOrderAdjustment::where('origin_type', 'vip')->where('origin_id', $vipMember->id)->whereHas('order', function ($query) {
                     $query->where('status', 'paid');
                 })->get()->count();
 
                 $freeCourseCount = $vipMember->plan->getFreeCourseCount() - $useCount;
-
             }
         }
 
         $regex = "/src=\"\/uploads\/ueditor\/php\//";
-        $num_matches = preg_replace($regex, 'src="' . env('HOMESITE') . '/uploads/ueditor/php/', $course->about);
+        $num_matches = preg_replace($regex, 'src="'.env('HOMESITE').'/uploads/ueditor/php/', $course->about);
         $regex = "/src=\"\/files\/course\//";
-        $num_matches = preg_replace($regex, 'src="' . env('HOMESITE') . '/files/course/', $num_matches);
+        $num_matches = preg_replace($regex, 'src="'.env('HOMESITE').'/files/course/', $num_matches);
         $course->about = $num_matches;
 
         $teacher = null;
-        $coterie=null;
+        $coterie = null;
         if ($course->teacher) {
-            $teacher=$course->teacher->with('details')->where('user_id',$course->teacher->user_id)->first();
-            $teacher->avatar=getHellobiAvatar($course->teacher->avatar);
+            $teacher = $course->teacher->with('details')->where('user_id', $course->teacher->user_id)->first();
+            $teacher->avatar = getHellobiAvatar($course->teacher->avatar);
             $coteries = null;
 //            $coterie = $coteries->total() ? $coteries->toArray()['data'][0] : null;
         }
@@ -151,30 +141,23 @@ class CourseController extends Controller
         return $this->success($results);
     }
 
-
     public function searchCourses()
     {
-
         $title = request('title');
 
         $limit = request('limit') ? request('limit') : 15;
 
-        $courses = $this->course->searchCoursesByTitle($title, $sort = 'updated_at', $limit,'published');
+        $courses = $this->course->searchCoursesByTitle($title, $sort = 'updated_at', $limit, 'published');
 
         return $this->paginator($courses, Course::class);
-
     }
-
 
     public function getAnnouncement($id)
     {
-
         $limit = request('limit') ? request('limit') : 15;
 
         $announcement = $this->announcement->getAnnouncementsByCourseId($id, $limit);
 
         return $this->paginator($announcement, CourseAnnouncement::class);
-
     }
-
 }

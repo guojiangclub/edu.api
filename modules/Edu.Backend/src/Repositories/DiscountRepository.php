@@ -1,11 +1,18 @@
 <?php
 
+/*
+ * This file is part of ibrand/edu-backend.
+ *
+ * (c) 果酱社区 <https://guojiang.club>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace GuoJiangClub\Edu\Backend\Repositories;
 
 use GuoJiangClub\Edu\Backend\Models\Discount;
 use Prettus\Repository\Eloquent\BaseRepository;
-
 
 class DiscountRepository extends BaseRepository
 {
@@ -14,7 +21,7 @@ class DiscountRepository extends BaseRepository
         return Discount::class;
     }
 
-    public function getDiscountList($where, $orWhere,$limit=15)
+    public function getDiscountList($where, $orWhere, $limit = 15)
     {
         return $this->scopeQuery(function ($query) use ($where, $orWhere) {
             $query = $query->Where(function ($query) use ($where) {
@@ -48,5 +55,4 @@ class DiscountRepository extends BaseRepository
             return  $query->with('discountActions')->orderBy('created_at', 'desc');
         })->paginate($limit);
     }
-
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of ibrand/edu-server.
  *
- * (c) iBrand <https://www.ibrand.cc>
+ * (c) 果酱社区 <https://guojiang.club>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +11,12 @@
 
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
-use iBrand\Component\Discount\Repositories\DiscountRepository;
+use GuoJiangClub\Common\Controllers\Controller;
+use GuoJiangClub\Component\Advert\Repositories\AdvertItemRepository;
 use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
 use GuoJiangClub\Edu\Server\Resources\Course;
-use GuoJiangClub\Component\Advert\Repositories\AdvertItemRepository;
-
-use GuoJiangClub\Common\Controllers\Controller;
+use iBrand\Component\Discount\Repositories\DiscountRepository;
 
 class HomeController extends Controller
 {
