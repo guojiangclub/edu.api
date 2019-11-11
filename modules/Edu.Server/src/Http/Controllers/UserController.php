@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use iBrand\Component\Discount\Repositories\CouponRepository;
-use iBrand\Component\User\Repository\UserRepository;
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Edu\Core\Repositories\UserDetailsRepository;
-use iBrand\Edu\Core\Services\CourseService;
-use iBrand\Edu\Server\Resources\Coupon;
-use iBrand\Sms\Facade as Sms;
-use iBrand\Common\Wechat\Platform\Services\MiniProgramService;
-use iBrand\Common\Controllers\Controller;
-use iBrand\Edu\Core\Repositories\CourseTeacherRepository;
+use GuoJiangClub\Component\User\Repository\UserRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\UserDetailsRepository;
+use GuoJiangClub\Edu\Core\Services\CourseService;
+use GuoJiangClub\Edu\Server\Resources\Coupon;
+use GuoJiangClub\Sms\Facade as Sms;
+use GuoJiangClub\Common\Wechat\Platform\Services\MiniProgramService;
+use GuoJiangClub\Common\Controllers\Controller;
+use GuoJiangClub\Edu\Core\Repositories\CourseTeacherRepository;
 
 class UserController extends Controller
 {

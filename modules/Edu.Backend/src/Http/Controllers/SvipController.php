@@ -6,20 +6,20 @@
  * Time: 19:35
  */
 
-namespace iBrand\Edu\Backend\Http\Controllers;
+namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
 
 use iBrand\Backend\Http\Controllers\Controller;
-use iBrand\Edu\Backend\Models\VipPlan;
+use GuoJiangClub\Edu\Backend\Models\VipPlan;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Carbon\Carbon;
-use iBrand\Edu\Core\Models\VipMember;
-use iBrand\Edu\Core\Models\CourseOrder;
-use iBrand\Edu\Core\Models\CourseOrderAdjustment;
+use GuoJiangClub\Edu\Core\Models\VipMember;
+use GuoJiangClub\Edu\Core\Models\CourseOrder;
+use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
 
 
 class SvipController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace iBrand\Edu\Backend\Models;
+namespace GuoJiangClub\Edu\Backend\Models;
 
 
 class DiscountCoupon extends \iBrand\Component\Discount\Models\Coupon

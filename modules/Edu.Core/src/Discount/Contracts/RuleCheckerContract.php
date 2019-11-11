@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Discount\Contracts;
+namespace GuoJiangClub\Edu\Core\Discount\Contracts;
 
 use iBrand\Component\Discount\Contracts\DiscountContract;
 use iBrand\Component\Discount\Contracts\DiscountSubjectContract;

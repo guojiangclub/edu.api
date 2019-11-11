@@ -1,11 +1,11 @@
 <?php
 
-namespace iBrand\Edu\Backend\Services;
+namespace GuoJiangClub\Edu\Backend\Services;
 
 
-use iBrand\Edu\Core\Repositories\CourseRepository;
-use iBrand\Edu\Core\Repositories\CourseLessonRepository;
-use iBrand\Edu\Core\Repositories\CourseChapterRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
 
 class CourseService
 {

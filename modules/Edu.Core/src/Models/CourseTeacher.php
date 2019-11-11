@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Models;
+namespace GuoJiangClub\Edu\Core\Models;
 
 use iBrand\Component\User\Models\User;
-use iBrand\Edu\Core\Models\Relations\BelongsToCourseTrait;
+use GuoJiangClub\Edu\Core\Models\Relations\BelongsToCourseTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class CourseTeacher extends Model

@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Processes;
+namespace GuoJiangClub\Edu\Core\Processes;
 
 use Carbon\Carbon;
-use iBrand\Edu\Core\Models\CourseOrder;
-use iBrand\Edu\Core\Repositories\CourseRepository;
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Edu\Core\Repositories\CourseOrderRepository;
+use GuoJiangClub\Edu\Core\Models\CourseOrder;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseOrderRepository;
 
 class CourseOrderProcess
 {

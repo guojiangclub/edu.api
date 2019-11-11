@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\PaidNotify;
+namespace GuoJiangClub\Edu\Core\PaidNotify;
 
 use Carbon\Carbon;
-use iBrand\Component\Pay\Contracts\PayNotifyContract;
-use iBrand\Component\Pay\Models\Charge;
-use iBrand\Edu\Core\Repositories\VipOrderRepository;
-use iBrand\Edu\Core\Repositories\VipMemberRepository;
+use GuoJiangClub\Component\Pay\Contracts\PayNotifyContract;
+use GuoJiangClub\Component\Pay\Models\Charge;
+use GuoJiangClub\Edu\Core\Repositories\VipOrderRepository;
+use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
 
 class VipPaidNotify implements PayNotifyContract
 {

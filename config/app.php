@@ -184,9 +184,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        iBrand\Edu\Core\Providers\AppServiceProvider::class,
-        iBrand\Edu\Backend\Providers\EduBackendServiceProvider::class,
-        iBrand\Edu\Server\Providers\ServerServiceProvider::class,
+        GuoJiangClub\Edu\Core\Providers\AppServiceProvider::class,
+        GuoJiangClub\Edu\Backend\Providers\EduBackendServiceProvider::class,
+        GuoJiangClub\Edu\Server\Providers\ServerServiceProvider::class,
 
     ],
 

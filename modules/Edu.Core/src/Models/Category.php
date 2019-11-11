@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Models;
+namespace GuoJiangClub\Edu\Core\Models;
 
 use Gzero\EloquentTree\Model\Tree;
 

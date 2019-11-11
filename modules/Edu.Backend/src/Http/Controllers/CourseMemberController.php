@@ -1,19 +1,19 @@
 <?php
 
 
-namespace iBrand\Edu\Backend\Http\Controllers;
+namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
 use DB;
 use Carbon\Carbon;
 use iBrand\Backend\Http\Controllers\Controller;
-use iBrand\Edu\Backend\Repositories\CourseRepository;
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Edu\Core\Repositories\CourseOrderRepository;
+use GuoJiangClub\Edu\Backend\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseOrderRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;
-use iBrand\Edu\Core\Models\CourseMember;
-use iBrand\Edu\Backend\Repositories\UserRepository;
+use GuoJiangClub\Edu\Core\Models\CourseMember;
+use GuoJiangClub\Edu\Backend\Repositories\UserRepository;
 
 class CourseMemberController extends Controller
 {

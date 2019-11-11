@@ -9,22 +9,22 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use Carbon\Carbon;
 use iBrand\Component\Discount\Repositories\DiscountRepository;
-use iBrand\Edu\Core\Repositories\CategoryRepository;
-use iBrand\Edu\Core\Repositories\CourseAnnouncementRepository;
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Edu\Core\Repositories\CourseRepository;
-use iBrand\Edu\Core\Repositories\VipMemberRepository;
-use iBrand\Edu\Core\Services\CourseService;
-use iBrand\Edu\Server\Resources\Course;
-use iBrand\Edu\Server\Resources\CourseAnnouncement;
-use iBrand\Edu\Core\Models\CourseOrderAdjustment;
-use iBrand\Component\User\Repository\UserRepository;
-use iBrand\Common\Controllers\Controller;
-use iBrand\Edu\Core\Models\UserDetails;
+use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseAnnouncementRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
+use GuoJiangClub\Edu\Core\Services\CourseService;
+use GuoJiangClub\Edu\Server\Resources\Course;
+use GuoJiangClub\Edu\Server\Resources\CourseAnnouncement;
+use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
+use GuoJiangClub\Component\User\Repository\UserRepository;
+use GuoJiangClub\Common\Controllers\Controller;
+use GuoJiangClub\Edu\Core\Models\UserDetails;
 
 class CourseController extends Controller
 {

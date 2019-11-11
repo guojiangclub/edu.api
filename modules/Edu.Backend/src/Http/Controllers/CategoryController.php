@@ -6,11 +6,11 @@
  * Time: 18:41
  */
 
-namespace iBrand\Edu\Backend\Http\Controllers;
+namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
 
 use iBrand\Backend\Http\Controllers\Controller;
-use iBrand\Edu\Backend\Models\Category;
+use GuoJiangClub\Edu\Backend\Models\Category;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;

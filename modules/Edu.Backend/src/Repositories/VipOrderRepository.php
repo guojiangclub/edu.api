@@ -6,10 +6,10 @@
  * Time: 18:15
  */
 
-namespace iBrand\Edu\Backend\Repositories;
+namespace GuoJiangClub\Edu\Backend\Repositories;
 
 
-use iBrand\Edu\Backend\Models\VipOrder;
+use GuoJiangClub\Edu\Backend\Models\VipOrder;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class VipOrderRepository extends BaseRepository

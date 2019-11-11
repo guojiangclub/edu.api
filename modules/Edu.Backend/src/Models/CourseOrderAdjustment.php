@@ -1,9 +1,9 @@
 <?php
 
-namespace iBrand\Edu\Backend\Models;
+namespace GuoJiangClub\Edu\Backend\Models;
 
 
-class CourseOrderAdjustment extends \iBrand\Edu\Core\Models\CourseOrderAdjustment
+class CourseOrderAdjustment extends \GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment
 {
 
     public function getOrderAdjustmentHistory($where, $limit = 50, $time = [])

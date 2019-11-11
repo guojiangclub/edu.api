@@ -6,9 +6,9 @@
  * Time: 12:15
  */
 
-namespace iBrand\Edu\Core\Policies;
+namespace GuoJiangClub\Edu\Core\Policies;
 
-use iBrand\Edu\Core\Models\VipOrder;
+use GuoJiangClub\Edu\Core\Models\VipOrder;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Foundation\Auth\User;
 

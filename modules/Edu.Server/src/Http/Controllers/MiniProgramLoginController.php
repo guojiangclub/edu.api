@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use EasyWeChat;
-use iBrand\Component\User\Repository\UserBindRepository;
-use iBrand\Component\User\Repository\UserRepository;
-use iBrand\Component\User\UserService;
-use iBrand\Common\Controllers\Controller;
+use GuoJiangClub\Component\User\Repository\UserBindRepository;
+use GuoJiangClub\Component\User\Repository\UserRepository;
+use GuoJiangClub\Component\User\UserService;
+use GuoJiangClub\Common\Controllers\Controller;
 
 class MiniProgramLoginController extends Controller
 {

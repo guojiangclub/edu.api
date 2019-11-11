@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Providers;
+namespace GuoJiangClub\Edu\Server\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Route;
@@ -23,7 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'iBrand\Edu\Server\Http\Controllers';
+    protected $namespace = 'GuoJiangClub\Edu\Server\Http\Controllers';
 
     public function boot()
     {

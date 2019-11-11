@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use iBrand\Component\Discount\Repositories\DiscountRepository;
-use iBrand\Edu\Core\Repositories\CategoryRepository;
-use iBrand\Edu\Core\Repositories\CourseRepository;
-use iBrand\Edu\Server\Resources\Course;
-use iBrand\Component\Advert\Repositories\AdvertItemRepository;
+use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Server\Resources\Course;
+use GuoJiangClub\Component\Advert\Repositories\AdvertItemRepository;
 
-use iBrand\Common\Controllers\Controller;
+use GuoJiangClub\Common\Controllers\Controller;
 
 class HomeController extends Controller
 {

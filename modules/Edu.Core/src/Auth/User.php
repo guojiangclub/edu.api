@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Auth;
+namespace GuoJiangClub\Edu\Core\Auth;
 
 use iBrand\Component\User\Models\User as BaseUser;
 use Laravel\Passport\HasApiTokens;

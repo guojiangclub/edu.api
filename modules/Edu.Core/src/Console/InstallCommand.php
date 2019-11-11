@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Console;
+namespace GuoJiangClub\Edu\Core\Console;
 
 use Illuminate\Console\Command;
-use iBrand\Edu\Backend\Seeds\EduBackendMenuSeeder;
+use GuoJiangClub\Edu\Backend\Seeds\EduBackendMenuSeeder;
 use DB;
 
 class InstallCommand extends Command

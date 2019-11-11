@@ -1,6 +1,6 @@
 <?php
 
-namespace iBrand\Edu\Backend\Models;
+namespace GuoJiangClub\Edu\Backend\Models;
 
 class DiscountRule extends \iBrand\Component\Discount\Models\Rule
 {

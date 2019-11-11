@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Services;
+namespace GuoJiangClub\Edu\Core\Services;
 
 
 use Exception;
@@ -22,8 +22,8 @@ use iBrand\Component\Discount\Models\Coupon;
 use iBrand\Component\Discount\Models\Discount;
 use iBrand\Component\Discount\Repositories\CouponRepository;
 use iBrand\Component\Discount\Repositories\DiscountRepository;
-use iBrand\Edu\Core\Discount\Checkers\DiscountEligibilityChecker;
-use iBrand\Edu\Core\Discount\Contracts\DiscountItemContract;
+use GuoJiangClub\Edu\Core\Discount\Checkers\DiscountEligibilityChecker;
+use GuoJiangClub\Edu\Core\Discount\Contracts\DiscountItemContract;
 
 class DiscountService
 {

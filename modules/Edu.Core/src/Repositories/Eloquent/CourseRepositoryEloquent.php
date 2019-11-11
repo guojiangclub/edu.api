@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Repositories\Eloquent;
+namespace GuoJiangClub\Edu\Core\Repositories\Eloquent;
 
-use iBrand\Edu\Core\Models\Course;
-use iBrand\Edu\Core\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Core\Models\Course;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 

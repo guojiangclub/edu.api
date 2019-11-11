@@ -6,7 +6,7 @@
  * Date: 2019/1/14
  * Time: 16:47
  */
-namespace iBrand\Edu\Backend\Seeds;
+namespace GuoJiangClub\Edu\Backend\Seeds;
 
 
 use Illuminate\Database\Seeder;

@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Processes;
+namespace GuoJiangClub\Edu\Core\Processes;
 
 use Carbon\Carbon;
-use iBrand\Edu\Core\Models\VipOrder;
-use iBrand\Edu\Core\Repositories\VipMemberRepository;
-use iBrand\Edu\Core\Repositories\VipOrderRepository;
+use GuoJiangClub\Edu\Core\Models\VipOrder;
+use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\VipOrderRepository;
 
 class VipOrderProcess
 {

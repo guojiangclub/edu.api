@@ -6,19 +6,19 @@
  * Time: 19:34
  */
 
-namespace iBrand\Edu\Backend\Http\Controllers;
+namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
 
 use iBrand\Backend\Http\Controllers\Controller;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
-use iBrand\Edu\Backend\Repositories\DiscountRepository;
-use iBrand\Edu\Backend\Repositories\CouponRepository;
-use iBrand\Edu\Backend\Repositories\CourseOrderAdjustmentRepository;
+use GuoJiangClub\Edu\Backend\Repositories\DiscountRepository;
+use GuoJiangClub\Edu\Backend\Repositories\CouponRepository;
+use GuoJiangClub\Edu\Backend\Repositories\CourseOrderAdjustmentRepository;
 use Carbon\Carbon;
-use iBrand\Edu\Backend\Models\DiscountAction;
-use iBrand\Edu\Backend\Models\Discount;
-use iBrand\Edu\Backend\Models\DiscountRule;
+use GuoJiangClub\Edu\Backend\Models\DiscountAction;
+use GuoJiangClub\Edu\Backend\Models\Discount;
+use GuoJiangClub\Edu\Backend\Models\DiscountRule;
 use Validator;
 use Illuminate\Http\Request;
 use DB;

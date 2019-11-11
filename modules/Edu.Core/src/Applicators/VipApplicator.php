@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Applicators;
+namespace GuoJiangClub\Edu\Core\Applicators;
 
 use iBrand\Component\Discount\Contracts\AdjustmentContract;
 use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
-use iBrand\Edu\Core\Models\CourseOrderAdjustment;
-use iBrand\Edu\Core\Models\VipMember;
+use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
+use GuoJiangClub\Edu\Core\Models\VipMember;
 
 class VipApplicator
 {

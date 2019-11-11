@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Models\Relations;
+namespace GuoJiangClub\Edu\Core\Models\Relations;
 
-use iBrand\Edu\Core\Models\Course;
+use GuoJiangClub\Edu\Core\Models\Course;
 
 trait BelongsToCourseTrait
 {

@@ -6,11 +6,11 @@
  * Time: 19:47
  */
 
-namespace iBrand\Edu\Backend\Http\Controllers;
+namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
 
 use iBrand\Backend\Http\Controllers\Controller;
-use iBrand\Edu\Backend\Repositories\VipOrderRepository;
+use GuoJiangClub\Edu\Backend\Repositories\VipOrderRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
 

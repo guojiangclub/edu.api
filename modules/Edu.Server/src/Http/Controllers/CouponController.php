@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use iBrand\Component\Discount\Repositories\CouponRepository;
 use iBrand\Component\Discount\Repositories\DiscountRepository;
-use iBrand\Common\Controllers\Controller;
-use iBrand\Edu\Core\Services\DiscountService;
+use GuoJiangClub\Common\Controllers\Controller;
+use GuoJiangClub\Edu\Core\Services\DiscountService;
 
 class CouponController extends Controller
 {

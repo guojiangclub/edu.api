@@ -6,12 +6,12 @@
  * Time: 18:15
  */
 
-namespace iBrand\Edu\Backend\Models;
+namespace GuoJiangClub\Edu\Backend\Models;
 
 //use iBrand\Component\User\Models\User;
-use iBrand\Hellobi\Auth\User;
+use GuoJiangClub\Hellobi\Auth\User;
 
-class VipOrder extends \iBrand\Edu\Core\Models\VipOrder
+class VipOrder extends \GuoJiangClub\Edu\Core\Models\VipOrder
 {
     public function user()
     {

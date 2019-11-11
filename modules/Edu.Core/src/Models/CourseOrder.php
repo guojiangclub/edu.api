@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Models;
+namespace GuoJiangClub\Edu\Core\Models;
 
 use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
 use iBrand\Component\User\Models\User;
-use iBrand\Currency\Format\HasFormatAttributesTrait;
-use iBrand\Edu\Core\Models\Relations\BelongsToCourseTrait;
+use GuoJiangClub\Currency\Format\HasFormatAttributesTrait;
+use GuoJiangClub\Edu\Core\Models\Relations\BelongsToCourseTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class CourseOrder extends Model implements DiscountSubjectContract

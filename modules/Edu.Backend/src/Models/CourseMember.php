@@ -1,8 +1,8 @@
 <?php
 
-namespace iBrand\Edu\Backend\Models;
+namespace GuoJiangClub\Edu\Backend\Models;
 
-class CourseMember extends \iBrand\Edu\Core\Models\CourseMember
+class CourseMember extends \GuoJiangClub\Edu\Core\Models\CourseMember
 {
 
 }

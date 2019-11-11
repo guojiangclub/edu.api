@@ -10,7 +10,7 @@
     "authors": [
         {
             "name": "peter chen",
-            "email": "chenhao@element.vip"
+            "email": "i@chenhow.com"
         }
     ],
     "require": {
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "iBrand\\Edu\\Backend\\": "src/"
+            "GuoJiangClub\\Edu\\Backend\\": "src/"
         }
     },
     "license": "MIT",

@@ -6,12 +6,12 @@
  * Time: 11:06
  */
 
-namespace iBrand\Edu\Backend\Models;
+namespace GuoJiangClub\Edu\Backend\Models;
 
 
-use iBrand\Edu\Core\Models\CourseTeacher;
+use GuoJiangClub\Edu\Core\Models\CourseTeacher;
 
-class Course extends \iBrand\Edu\Core\Models\Course
+class Course extends \GuoJiangClub\Edu\Core\Models\Course
 {
     public function teacher()
     {

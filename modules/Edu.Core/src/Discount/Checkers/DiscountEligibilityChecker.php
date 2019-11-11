@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Discount\Checkers;
+namespace GuoJiangClub\Edu\Core\Discount\Checkers;
 
 use iBrand\Component\Discount\Checkers\DiscountEligibilityChecker as BaseDiscountEligibilityChecker;
 use iBrand\Component\Discount\Contracts\DiscountContract;
-use iBrand\Edu\Core\Discount\Contracts\DiscountItemContract;
+use GuoJiangClub\Edu\Core\Discount\Contracts\DiscountItemContract;
 
 class DiscountEligibilityChecker extends BaseDiscountEligibilityChecker
 {

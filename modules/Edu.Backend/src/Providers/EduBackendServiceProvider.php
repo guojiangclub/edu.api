@@ -1,8 +1,8 @@
 <?php
 
-namespace iBrand\Edu\Backend\Providers;
+namespace GuoJiangClub\Edu\Backend\Providers;
 
-use iBrand\Edu\Backend\EduBackendExtension;
+use GuoJiangClub\Edu\Backend\EduBackendExtension;
 use iBrand\UEditor\UEditorServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -11,7 +11,7 @@ use Illuminate\Support\ServiceProvider;
 class EduBackendServiceProvider extends ServiceProvider
 {
 
-    protected $namespace = 'iBrand\Edu\Backend\Http\Controllers';
+    protected $namespace = 'GuoJiangClub\Edu\Backend\Http\Controllers';
 
 
     /**

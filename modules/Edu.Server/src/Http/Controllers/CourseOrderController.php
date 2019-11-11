@@ -9,25 +9,25 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use Carbon\Carbon;
 use iBrand\Component\Discount\Applicators\DiscountApplicator;
 use iBrand\Component\Discount\Repositories\CouponRepository;
-use iBrand\Component\Pay\Facades\Charge;
-use iBrand\Component\Pay\Facades\PayNotify;
-use iBrand\Edu\Core\Applicators\VipApplicator;
-use iBrand\Edu\Core\Models\CourseOrderAdjustment;
-use iBrand\Edu\Core\Processes\CourseOrderProcess;
-use iBrand\Edu\Core\Repositories\CourseOrderRepository;
-use iBrand\Edu\Core\Repositories\CourseRepository;
-use iBrand\Edu\Core\Repositories\UserDetailsRepository;
-use iBrand\Edu\Core\Repositories\VipMemberRepository;
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Edu\Core\Services\DiscountService;
-use iBrand\Component\Pay\Models\Charge as ChargeModel;
-use iBrand\Common\Controllers\Controller;
-use iBrand\Edu\Core\Services\CourseService;
+use GuoJiangClub\Component\Pay\Facades\Charge;
+use GuoJiangClub\Component\Pay\Facades\PayNotify;
+use GuoJiangClub\Edu\Core\Applicators\VipApplicator;
+use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
+use GuoJiangClub\Edu\Core\Processes\CourseOrderProcess;
+use GuoJiangClub\Edu\Core\Repositories\CourseOrderRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Core\Repositories\UserDetailsRepository;
+use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Services\DiscountService;
+use GuoJiangClub\Component\Pay\Models\Charge as ChargeModel;
+use GuoJiangClub\Common\Controllers\Controller;
+use GuoJiangClub\Edu\Core\Services\CourseService;
 
 
 class CourseOrderController extends Controller
@@ -216,7 +216,7 @@ class CourseOrderController extends Controller
         }
 
         if ($order->status != 'paid') {
-            $payRecords = \iBrand\Component\Pay\Models\Charge::ofPaidOrderNo($order_no)->get();
+            $payRecords = \GuoJiangClub\Component\Pay\Models\Charge::ofPaidOrderNo($order_no)->get();
             if ($payRecords->count() > 0 && $payRecords->sum('amount') >= $order->total) {
                 $order->status = 'paid';
                 $order->paid_at = Carbon::now();

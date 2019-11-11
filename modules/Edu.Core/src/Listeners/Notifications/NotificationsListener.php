@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Listeners\Notifications;
+namespace GuoJiangClub\Edu\Core\Listeners\Notifications;
 
 class NotificationsListener
 {
@@ -17,7 +17,7 @@ class NotificationsListener
     {
         $events->listen(
             'edu.course.order.success.wechat.notification',
-            'iBrand\Edu\Core\Listeners\Notifications\CourseOrderSuccess'
+            'GuoJiangClub\Edu\Core\Listeners\Notifications\CourseOrderSuccess'
         );
 
     }

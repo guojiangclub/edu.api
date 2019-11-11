@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Models;
+namespace GuoJiangClub\Edu\Core\Models;
 
-use iBrand\Currency\Format\HasFormatAttributesTrait;
-use iBrand\Edu\Core\Discount\Contracts\DiscountItemContract;
+use GuoJiangClub\Currency\Format\HasFormatAttributesTrait;
+use GuoJiangClub\Edu\Core\Discount\Contracts\DiscountItemContract;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model implements DiscountItemContract

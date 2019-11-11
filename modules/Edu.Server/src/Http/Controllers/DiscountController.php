@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
-use iBrand\Common\Controllers\Controller;
+use GuoJiangClub\Common\Controllers\Controller;
 
 class DiscountController extends Controller
 {

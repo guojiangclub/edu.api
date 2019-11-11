@@ -6,10 +6,10 @@
  * Time: 15:24
  */
 
-namespace iBrand\Edu\Backend\Models;
+namespace GuoJiangClub\Edu\Backend\Models;
 
 
-class VipPlan extends \iBrand\Edu\Core\Models\VipPlan
+class VipPlan extends \GuoJiangClub\Edu\Core\Models\VipPlan
 {
     public function setActionsAttribute($value)
     {

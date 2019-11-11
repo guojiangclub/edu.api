@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Edu\Core\Repositories\CourseAnnouncementRepository;
-use iBrand\Edu\Server\Resources\CourseMember;
-use iBrand\Edu\Server\Resources\CourseAnnouncement;
-use iBrand\Common\Controllers\Controller;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseAnnouncementRepository;
+use GuoJiangClub\Edu\Server\Resources\CourseMember;
+use GuoJiangClub\Edu\Server\Resources\CourseAnnouncement;
+use GuoJiangClub\Common\Controllers\Controller;
 
 class MyCourseController extends Controller
 {

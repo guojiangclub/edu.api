@@ -9,49 +9,49 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Providers;
+namespace GuoJiangClub\Edu\Core\Providers;
 
 use iBrand\Component\Discount\Contracts\AdjustmentContract;
 use iBrand\Component\User\Models\User as BaseUser;
-use iBrand\Edu\Core\Auth\User;
-use iBrand\Edu\Core\Console\BuildVipPlan;
-use iBrand\Edu\Core\Console\SetUserVip;
-use iBrand\Edu\Core\Console\SetAdvert;
-use iBrand\Edu\Core\Discount\Actions\CourseFixedDiscountAction;
-use iBrand\Edu\Core\Discount\Actions\CoursePercentageDiscountAction;
-use iBrand\Edu\Core\Models\CourseOrder;
-use iBrand\Edu\Core\Models\CourseOrderAdjustment;
-use iBrand\Edu\Core\PaidNotify\CoursePaidNotify;
-use iBrand\Edu\Core\Policies\CourseOrderPolicy;
-use iBrand\Edu\Core\Repositories\CategoryRepository;
-use iBrand\Edu\Core\Repositories\CourseAnnouncementRepository;
-use iBrand\Edu\Core\Repositories\CourseChapterRepository;
-use iBrand\Edu\Core\Repositories\CourseFavoriteRepository;
-use iBrand\Edu\Core\Repositories\CourseLessonRepository;
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Edu\Core\Repositories\CourseOrderRepository;
-use iBrand\Edu\Core\Repositories\CourseRepository;
-use iBrand\Edu\Core\Repositories\CourseReviewRepository;
-use iBrand\Edu\Core\Repositories\CourseTeacherRepository;
-use iBrand\Edu\Core\Repositories\Eloquent\CategoryRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseAnnouncementRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseChapterRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseFavoriteRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseLessonRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseMemberRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseOrderRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseReviewRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\CourseTeacherRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\UserDetailsRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\Eloquent\VipMemberRepositoryEloquent;
-use iBrand\Edu\Core\Repositories\UserDetailsRepository;
-use iBrand\Edu\Core\Repositories\VipMemberRepository;
+use GuoJiangClub\Edu\Core\Auth\User;
+use GuoJiangClub\Edu\Core\Console\BuildVipPlan;
+use GuoJiangClub\Edu\Core\Console\SetUserVip;
+use GuoJiangClub\Edu\Core\Console\SetAdvert;
+use GuoJiangClub\Edu\Core\Discount\Actions\CourseFixedDiscountAction;
+use GuoJiangClub\Edu\Core\Discount\Actions\CoursePercentageDiscountAction;
+use GuoJiangClub\Edu\Core\Models\CourseOrder;
+use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
+use GuoJiangClub\Edu\Core\PaidNotify\CoursePaidNotify;
+use GuoJiangClub\Edu\Core\Policies\CourseOrderPolicy;
+use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseAnnouncementRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseFavoriteRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseOrderRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseReviewRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseTeacherRepository;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CategoryRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseAnnouncementRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseChapterRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseFavoriteRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseLessonRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseMemberRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseOrderRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseReviewRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\CourseTeacherRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\UserDetailsRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\Eloquent\VipMemberRepositoryEloquent;
+use GuoJiangClub\Edu\Core\Repositories\UserDetailsRepository;
+use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use iBrand\Edu\Core\Models\VipOrder;
-use iBrand\Edu\Core\Policies\VipOrderPolicy;
-use iBrand\Edu\Core\Console\InstallCommand;
+use GuoJiangClub\Edu\Core\Models\VipOrder;
+use GuoJiangClub\Edu\Core\Policies\VipOrderPolicy;
+use GuoJiangClub\Edu\Core\Console\InstallCommand;
 use Event;
 
 class AppServiceProvider extends ServiceProvider
@@ -69,7 +69,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->commands([InstallCommand::class,BuildVipPlan::class, SetUserVip::class,SetAdvert::class]);
 
-        //Event::subscribe('iBrand\Edu\Core\Listeners\Notifications\NotificationsListener');
+        //Event::subscribe('GuoJiangClub\Edu\Core\Listeners\Notifications\NotificationsListener');
     }
 
     public function register()

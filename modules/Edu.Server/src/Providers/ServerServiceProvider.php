@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Providers;
+namespace GuoJiangClub\Edu\Server\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

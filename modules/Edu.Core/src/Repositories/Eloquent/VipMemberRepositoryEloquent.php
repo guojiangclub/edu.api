@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Repositories\Eloquent;
+namespace GuoJiangClub\Edu\Core\Repositories\Eloquent;
 
 use Carbon\Carbon;
-use iBrand\Edu\Core\Models\VipMember;
-use iBrand\Edu\Core\Repositories\VipMemberRepository;
+use GuoJiangClub\Edu\Core\Models\VipMember;
+use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class VipMemberRepositoryEloquent extends BaseRepository implements VipMemberRepository

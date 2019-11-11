@@ -1,5 +1,5 @@
 <?php
-namespace iBrand\Edu\Backend\Http\Controllers;
+namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 use iBrand\Backend\Http\Controllers\Controller;
 /**
  * Created by PhpStorm.

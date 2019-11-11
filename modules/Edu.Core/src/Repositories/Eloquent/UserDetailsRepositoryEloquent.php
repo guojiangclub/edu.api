@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Repositories\Eloquent;
+namespace GuoJiangClub\Edu\Core\Repositories\Eloquent;
 
-use iBrand\Edu\Core\Models\UserDetails;
-use iBrand\Edu\Core\Repositories\UserDetailsRepository;
+use GuoJiangClub\Edu\Core\Models\UserDetails;
+use GuoJiangClub\Edu\Core\Repositories\UserDetailsRepository;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class UserDetailsRepositoryEloquent extends BaseRepository implements UserDetailsRepository

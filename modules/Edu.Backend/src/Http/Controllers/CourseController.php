@@ -6,15 +6,15 @@
  * Time: 19:33
  */
 
-namespace iBrand\Edu\Backend\Http\Controllers;
+namespace GuoJiangClub\Edu\Backend\Http\Controllers;
 
 use DB;
 use Carbon\Carbon;
 use iBrand\Backend\Http\Controllers\Controller;
-use iBrand\Edu\Backend\Models\Category;
-use iBrand\Edu\Backend\Models\Course;
-use iBrand\Edu\Backend\Repositories\CourseRepository;
-use iBrand\Edu\Backend\Repositories\CourseTeacherRepository;
+use GuoJiangClub\Edu\Backend\Models\Category;
+use GuoJiangClub\Edu\Backend\Models\Course;
+use GuoJiangClub\Edu\Backend\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Backend\Repositories\CourseTeacherRepository;
 use Encore\Admin\Facades\Admin as LaravelAdmin;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;

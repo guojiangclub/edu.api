@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Resources;
+namespace GuoJiangClub\Edu\Server\Resources;
 
-use iBrand\Common\Resources\BaseResource;
+use GuoJiangClub\Common\Resources\BaseResource;
 
 class CourseMember extends BaseResource
 {

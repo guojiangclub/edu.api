@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Console;
+namespace GuoJiangClub\Edu\Core\Console;
 
 use Carbon\Carbon;
-use iBrand\Edu\Core\Models\VipMember;
-use iBrand\Edu\Core\Models\VipOrder;
+use GuoJiangClub\Edu\Core\Models\VipMember;
+use GuoJiangClub\Edu\Core\Models\VipOrder;
 use Illuminate\Console\Command;
 
 class SetUserVip extends Command

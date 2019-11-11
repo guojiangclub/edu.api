@@ -6,9 +6,9 @@
  * Date: 2019/1/16
  * Time: 11:05
  */
-namespace iBrand\Edu\Backend\Repositories;
+namespace GuoJiangClub\Edu\Backend\Repositories;
 
-use iBrand\Edu\Backend\Models\Course;
+use GuoJiangClub\Edu\Backend\Models\Course;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class CourseRepository extends BaseRepository

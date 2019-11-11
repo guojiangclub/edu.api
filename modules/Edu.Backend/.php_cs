@@ -1,6 +1,6 @@
 <?php
 $header = <<<EOF
-This file is part of ibrand/edu-core.
+This file is part of ibrand/edu-backend.
 
 (c) 果酱社区 <https://guojiang.club>
 

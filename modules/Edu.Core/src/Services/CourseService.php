@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Services;
+namespace GuoJiangClub\Edu\Core\Services;
 
-use iBrand\Edu\Core\Repositories\CategoryRepository;
-use iBrand\Edu\Core\Repositories\CourseChapterRepository;
-use iBrand\Edu\Core\Repositories\CourseLessonRepository;
-use iBrand\Edu\Core\Repositories\CourseRepository;
-use iBrand\Edu\Core\Repositories\CourseTeacherRepository;
+use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseChapterRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseTeacherRepository;
 use iBrand\Component\Discount\Models\Coupon;
-use iBrand\Edu\Core\Models\CourseMember;
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Edu\Core\Repositories\CourseOrderRepository;
+use GuoJiangClub\Edu\Core\Models\CourseMember;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseOrderRepository;
 
 class CourseService
 {

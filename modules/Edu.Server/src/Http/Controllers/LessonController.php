@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Server\Http\Controllers;
+namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use AliyunVod;
-use iBrand\Edu\Core\Repositories\CourseLessonRepository;
-use iBrand\Edu\Core\Repositories\CourseMemberRepository;
-use iBrand\Common\Controllers\Controller;
+use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
+use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
+use GuoJiangClub\Common\Controllers\Controller;
 
 class LessonController extends Controller
 {

@@ -11,7 +11,7 @@
   "authors": [
     {
       "name": "shjchen",
-      "email": "ibrand.shjchen@foxmail.com"
+      "email": "i@chenhow.com"
     }
   ],
   "require": {
@@ -25,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "iBrand\\Edu\\Core\\": "src/"
+      "GuoJiangClub\\Edu\\Core\\": "src/"
     },
     "files": [
       "src/helpers.php"
@@ -33,7 +33,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "iBrand\\Edu\\Core\\Test\\": "tests"
+      "GuoJiangClub\\Edu\\Core\\Test\\": "tests"
     }
   },
   "extra": {

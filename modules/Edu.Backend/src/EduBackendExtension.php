@@ -6,11 +6,11 @@
  * Date: 2019/1/14
  * Time: 16:46
  */
-namespace iBrand\Edu\Backend;
+namespace GuoJiangClub\Edu\Backend;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Extension;
-use iBrand\Edu\Backend\Seeds\EduBackendMenuSeeder;
+use GuoJiangClub\Edu\Backend\Seeds\EduBackendMenuSeeder;
 use Illuminate\Support\Facades\Artisan;
 
 class EduBackendExtension extends Extension

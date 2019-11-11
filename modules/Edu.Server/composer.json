@@ -11,7 +11,7 @@
   "authors": [
     {
       "name": "shjchen",
-      "email": "ibrand.shjchen@foxmail.com"
+      "email": "i@chenhow.com"
     }
   ],
   "require": {
@@ -24,12 +24,12 @@
   },
   "autoload": {
     "psr-4": {
-      "iBrand\\Edu\\Server\\": "src/"
+      "GuoJiangClub\\Edu\\Server\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "iBrand\\Edu\\Server\\Test\\": "tests"
+      "GuoJiangClub\\Edu\\Server\\Test\\": "tests"
     }
   },
   "extra": {

@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Console;
+namespace GuoJiangClub\Edu\Core\Console;
 
 use Illuminate\Console\Command;
-use iBrand\Component\Advert\Models\Advert;
-use iBrand\Component\Advert\Models\AdvertItem;
+use GuoJiangClub\Component\Advert\Models\Advert;
+use GuoJiangClub\Component\Advert\Models\AdvertItem;
 
 class SetAdvert extends Command
 {

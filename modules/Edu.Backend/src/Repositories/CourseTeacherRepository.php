@@ -1,9 +1,9 @@
 <?php
 
 
-namespace iBrand\Edu\Backend\Repositories;
+namespace GuoJiangClub\Edu\Backend\Repositories;
 
-use iBrand\Edu\Backend\Models\CourseTeacher;
+use GuoJiangClub\Edu\Backend\Models\CourseTeacher;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 class CourseTeacherRepository extends BaseRepository

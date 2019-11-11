@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace iBrand\Edu\Core\Console;
+namespace GuoJiangClub\Edu\Core\Console;
 
-use iBrand\Edu\Core\Models\VipPlan;
+use GuoJiangClub\Edu\Core\Models\VipPlan;
 use Illuminate\Console\Command;
 
 class BuildVipPlan extends Command

@@ -1,9 +1,9 @@
 <?php
 
-namespace iBrand\Edu\Backend\Models;
+namespace GuoJiangClub\Edu\Backend\Models;
 
 
-class CourseOrder extends \iBrand\Edu\Core\Models\CourseOrder
+class CourseOrder extends \GuoJiangClub\Edu\Core\Models\CourseOrder
 {
     public function user()
     {
