@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Edu\Core\Models;
 
-use GuoJiangClub\Currency\Format\HasFormatAttributesTrait;
+use iBrand\Currency\Format\HasFormatAttributesTrait;
 use GuoJiangClub\Edu\Core\Discount\Contracts\DiscountItemContract;
 use Illuminate\Database\Eloquent\Model;
 

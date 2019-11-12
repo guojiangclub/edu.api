@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Edu\Core\Models;
 
-use GuoJiangClub\Currency\Format\HasFormatAttributesTrait;
+use iBrand\Currency\Format\HasFormatAttributesTrait;
 use GuoJiangClub\Edu\Core\Models\Relations\BelongsToCourseTrait;
 use iBrand\Component\Discount\Contracts\DiscountSubjectContract;
 use iBrand\Component\User\Models\User;
