@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Edu\Server\Resources;
 
-use GuoJiangClub\Common\Resources\BaseResource;
+use iBrand\Common\Resources\BaseResource;
 
 class Coupon extends BaseResource
 {
