@@ -13,7 +13,7 @@ class CreateSvipTables extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('vip_plans')) {
+        if (!Schema::hasTable('vip_plan')) {
             Schema::create('vip_plan', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('title');

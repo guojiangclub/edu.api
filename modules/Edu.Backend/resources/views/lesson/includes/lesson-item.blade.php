@@ -26,21 +26,14 @@
     </div>
 
     <div class="item-actions">
-        {{--@if($item->type != 'testpaper')--}}
-            {{--<button class="btn btn-link" title="添加资料" data-toggle="modal" data-target="#modal"--}}
-                    {{--data-url=""><span--}}
-                        {{--class="glyphicon glyphicon-paperclip"></span>--}}
-            {{--</button>--}}
-        {{--@endif--}}
-
-        @if($item->type == 'testpaper')
+        {{--@if($item->type == 'testpaper')
             <a class="btn btn-link" title="预览" href=""
                target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a>
         @else
             <a class="btn btn-link" title="预览"
                href="" target="_blank"><span
                         class="glyphicon glyphicon-eye-open"></span></a>
-        @endif
+        @endif--}}
 
         @if($item->status == 0)
             <button class="btn btn-link publish-lesson-btn" title="发布"

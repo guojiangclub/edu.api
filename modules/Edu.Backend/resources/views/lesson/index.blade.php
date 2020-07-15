@@ -1,3 +1,6 @@
+<script>
+    window.UEDITOR_HOME_URL = "/laravel-u-editor/";
+</script>
 {!! Html::style(env("APP_URL").'/assets/edu-backend/libs/formvalidation/dist/css/formValidation.min.css') !!}
 <style>
     .panel-col {

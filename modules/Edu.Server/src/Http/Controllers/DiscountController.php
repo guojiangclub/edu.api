@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
-use GuoJiangClub\Common\Controllers\Controller;
+use iBrand\Common\Controllers\Controller;
 
 class DiscountController extends Controller
 {

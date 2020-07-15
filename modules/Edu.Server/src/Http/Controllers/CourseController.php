@@ -12,7 +12,7 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use GuoJiangClub\Common\Controllers\Controller;
+use iBrand\Common\Controllers\Controller;
 use GuoJiangClub\Component\User\Repository\UserRepository;
 use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
 use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;

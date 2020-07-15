@@ -98,7 +98,7 @@ class CreateCourseTables extends Migration
                 $table->string('media_id')->nullable()->comment('媒体文件ID(user_disk_file.id)');
                 $table->string('media_source', 32)->default('aliyun')->comment('媒体文件来源(self:本站上传,youku:优酷)');
                 $table->string('media_name')->default('')->comment('媒体文件名称');
-                $table->string('media_uri', 1024)->default('')->comment('媒体文件资源名');
+                $table->string('media_uri', 1024)->nullable()->comment('媒体文件资源名');
                 $table->integer('length')->unsigned()->nullable()->comment('视频，音频，文章阅读时长');
                 $table->integer('learned_count')->unsigned()->default(0); //课时被学习的数量
                 $table->integer('view_count')->unsigned()->default(0);//课时被打开的次数

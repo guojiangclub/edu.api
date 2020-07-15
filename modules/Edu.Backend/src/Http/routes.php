@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-$router->group(['prefix' => 'admin/edu'], function () use ($router) {
+$router->group(['prefix' => 'admin/college'], function () use ($router) {
     $router->get('index', 'DashBoardController@index');
 
     $router->group(['prefix' => 'category'], function () use ($router) {

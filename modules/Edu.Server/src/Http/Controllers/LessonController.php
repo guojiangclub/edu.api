@@ -12,7 +12,7 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use AliyunVod;
-use GuoJiangClub\Common\Controllers\Controller;
+use iBrand\Common\Controllers\Controller;
 use GuoJiangClub\Edu\Core\Repositories\CourseLessonRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
 

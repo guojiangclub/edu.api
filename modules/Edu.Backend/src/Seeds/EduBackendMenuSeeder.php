@@ -26,7 +26,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => '在线教育',
             'icon' => '',
             'blank' => 1,
-            'uri' => 'edu/course/list',
+            'uri' => 'college/course/list',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -49,7 +49,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => '所有课程',
             'icon' => '',
             'blank' => 0,
-            'uri' => 'edu/course/list',
+            'uri' => 'college/course/list',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -59,7 +59,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => '课程方向',
             'icon' => '',
             'blank' => 0,
-            'uri' => 'edu/category/list?group_id=1',
+            'uri' => 'college/category/list?group_id=1',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -69,7 +69,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => '课程形式',
             'icon' => '',
             'blank' => 0,
-            'uri' => 'edu/category/list?group_id=2',
+            'uri' => 'college/category/list?group_id=2',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -79,7 +79,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => '课程标签',
             'icon' => '',
             'blank' => 0,
-            'uri' => 'edu/category/list?group_id=3',
+            'uri' => 'college/category/list?group_id=3',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -100,7 +100,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => '优惠券管理',
             'icon' => '',
             'blank' => 0,
-            'uri' => 'edu/discount/list',
+            'uri' => 'college/discount/list',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -112,7 +112,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => '订单管理',
             'icon' => 'fa-newspaper-o',
             'blank' => 1,
-            'uri' => 'edu/order/list',
+            'uri' => 'college/order/list',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -135,7 +135,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => 'SVIP计划管理',
             'icon' => '',
             'blank' => 0,
-            'uri' => 'edu/svip/plan/list',
+            'uri' => 'college/svip/plan/list',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -146,7 +146,7 @@ class EduBackendMenuSeeder extends Seeder
             'title' => 'SVIP订单管理',
             'icon' => '',
             'blank' => 0,
-            'uri' => 'edu/svip/order/list',
+            'uri' => 'college/svip/order/list',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time()),
         ]);

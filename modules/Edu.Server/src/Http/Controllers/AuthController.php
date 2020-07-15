@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
-use GuoJiangClub\Common\Controllers\Controller;
+use iBrand\Common\Controllers\Controller;
 use GuoJiangClub\Component\User\Repository\UserBindRepository;
 use GuoJiangClub\Component\User\Repository\UserRepository;
 use GuoJiangClub\Component\User\UserService;

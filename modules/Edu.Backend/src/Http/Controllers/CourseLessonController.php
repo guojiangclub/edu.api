@@ -31,7 +31,8 @@ class CourseLessonController extends Controller
     protected $courseService;
 
     public function __construct(CourseRepository $courseRepository, CourseLessonRepository $courseLessonRepository, CourseChapterRepository $courseChapterRepository, CourseService $courseService
-    ) {
+    )
+    {
         $this->courseRepository = $courseRepository;
 
         $this->courseLessonRepository = $courseLessonRepository;
@@ -76,11 +77,16 @@ class CourseLessonController extends Controller
     public function store($courseId, Request $request)
     {
         $data = $request->except(['_token', 'lessonId']);
-        if (is_numeric($data['second'])) {
+
+        if ($data['type'] == 'text') {
+            unset($data['minute']);
+            unset($data['second']);
+        }elseif (is_numeric($data['second'])) {
             $data['length'] = $this->textToSeconds($data['minute'], $data['second']);
             unset($data['minute']);
             unset($data['second']);
         }
+
         if (!request('lessonId')) {
             $item = $this->courseService->createLesson(array_merge($data, ['course_id' => $courseId]));
         } else {

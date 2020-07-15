@@ -11,7 +11,7 @@
 
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
-use GuoJiangClub\Common\Controllers\Controller;
+use iBrand\Common\Controllers\Controller;
 use GuoJiangClub\Edu\Core\Services\DiscountService;
 use iBrand\Component\Discount\Repositories\CouponRepository;
 use iBrand\Component\Discount\Repositories\DiscountRepository;

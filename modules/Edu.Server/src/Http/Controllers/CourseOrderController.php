@@ -12,7 +12,7 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use Carbon\Carbon;
-use GuoJiangClub\Common\Controllers\Controller;
+use iBrand\Common\Controllers\Controller;
 use GuoJiangClub\Component\Pay\Facades\Charge;
 use GuoJiangClub\Component\Pay\Facades\PayNotify;
 use GuoJiangClub\Component\Pay\Models\Charge as ChargeModel;
