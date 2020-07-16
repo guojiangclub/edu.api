@@ -13,9 +13,9 @@ namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use Carbon\Carbon;
 use iBrand\Common\Controllers\Controller;
-use GuoJiangClub\Component\Pay\Facades\Charge;
-use GuoJiangClub\Component\Pay\Facades\PayNotify;
-use GuoJiangClub\Component\Pay\Models\Charge as ChargeModel;
+use iBrand\Component\Pay\Facades\Charge;
+use iBrand\Component\Pay\Facades\PayNotify;
+use iBrand\Component\Pay\Models\Charge as ChargeModel;
 use GuoJiangClub\Edu\Core\Applicators\VipApplicator;
 use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
 use GuoJiangClub\Edu\Core\Processes\CourseOrderProcess;
