@@ -12,14 +12,14 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use iBrand\Common\Controllers\Controller;
-use GuoJiangClub\Common\Wechat\Platform\Services\MiniProgramService;
-use GuoJiangClub\Component\User\Repository\UserRepository;
+use iBrand\Common\Wechat\Platform\Services\MiniProgramService;
+use iBrand\Component\User\Repository\UserRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseMemberRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseTeacherRepository;
 use GuoJiangClub\Edu\Core\Repositories\UserDetailsRepository;
 use GuoJiangClub\Edu\Core\Services\CourseService;
 use GuoJiangClub\Edu\Server\Resources\Coupon;
-use GuoJiangClub\Sms\Facade as Sms;
+use iBrand\Sms\Facade as Sms;
 use iBrand\Component\Discount\Repositories\CouponRepository;
 
 class UserController extends Controller

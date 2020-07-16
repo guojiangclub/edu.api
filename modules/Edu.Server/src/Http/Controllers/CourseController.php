@@ -13,7 +13,7 @@ namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use Carbon\Carbon;
 use iBrand\Common\Controllers\Controller;
-use GuoJiangClub\Component\User\Repository\UserRepository;
+use iBrand\Component\User\Repository\UserRepository;
 use GuoJiangClub\Edu\Core\Models\CourseOrderAdjustment;
 use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseAnnouncementRepository;
