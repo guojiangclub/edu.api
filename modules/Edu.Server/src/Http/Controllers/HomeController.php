@@ -12,7 +12,7 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use iBrand\Common\Controllers\Controller;
-use GuoJiangClub\Component\Advert\Repositories\AdvertItemRepository;
+use iBrand\Component\Advert\Repositories\AdvertItemRepository;
 use GuoJiangClub\Edu\Core\Repositories\CategoryRepository;
 use GuoJiangClub\Edu\Core\Repositories\CourseRepository;
 use GuoJiangClub\Edu\Server\Resources\Course;
@@ -23,7 +23,7 @@ class HomeController extends Controller
     protected $category;
     protected $course;
     protected $discount;
-    protected $advertItemRepository;
+    protected $advertItem;
 
     public function __construct(CategoryRepository $categoryRepository, CourseRepository $courseRepository,
                                 DiscountRepository $discountRepository, AdvertItemRepository $advertItemRepository)
