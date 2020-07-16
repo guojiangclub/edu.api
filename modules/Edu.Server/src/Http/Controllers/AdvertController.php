@@ -12,11 +12,11 @@
 namespace GuoJiangClub\Edu\Server\Http\Controllers;
 
 use iBrand\Common\Controllers\Controller;
-use GuoJiangClub\Component\Advert\Repositories\AdvertItemRepository;
+use iBrand\Component\Advert\Repositories\AdvertItemRepository;
 
 class AdvertController extends Controller
 {
-    protected $advertItemRepository;
+    protected $advertItem;
 
     public function __construct(AdvertItemRepository $advertItemRepository)
     {
