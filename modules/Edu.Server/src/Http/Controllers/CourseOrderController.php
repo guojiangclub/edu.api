@@ -112,12 +112,12 @@ class CourseOrderController extends Controller
 
         $order = $this->order->getOrderBySN($sn);
 
-        $vipMembers = $this->vipMember->getActiveByUser($user->id);
+        /*$vipMembers = $this->vipMember->getActiveByUser($user->id);
 
         if ($vipMembers->count() > 0) {
             $isUseVip = request('use_vip') ? true : false;
             app(VipApplicator::class)->apply($order, $vipMembers->first(), $isUseVip);
-        }
+        }*/
 
         if (request('coupon_id') && $coupon = $this->coupon->find(request('coupon_id'))) {
             if (null != $coupon->used_at) {
