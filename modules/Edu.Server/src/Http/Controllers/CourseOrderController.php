@@ -161,11 +161,12 @@ class CourseOrderController extends Controller
         }
 
         $chargeModel = ChargeModel::create([
-            'app' => 'edu', 'type' => 'default', 'channel' => $channel, 'order_no' => $sn, 'client_ip' => request()->getClientIp(), 'amount' => $order->total, 'subject' => $order->title, 'body' => $order->title, 'extra' => request('extra'),
+            'app' => 'default', 'type' => 'course_bd', 'channel' => $channel, 'order_no' => $sn, 'client_ip' => request()->getClientIp(), 'amount' => $order->total, 'subject' => $order->title, 'body' => $order->title, 'extra' => request('extra'),
         ]);
 
         if ('wx_pub' == $channel) {
-            $redirectUrl = route('payment.wechat.getCode', ['charge_id' => $chargeModel->charge_id]);
+           // $redirectUrl = route('payment.wechat.getCode', ['charge_id' => $chargeModel->charge_id]);
+            $redirectUrl ='https://guojiang.club/payment/getCode?charge_id='.$chargeModel->charge_id;
         }
 
         if ('alipay_wap' == $channel) {
