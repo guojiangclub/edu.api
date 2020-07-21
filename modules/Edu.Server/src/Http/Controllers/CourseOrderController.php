@@ -72,7 +72,7 @@ class CourseOrderController extends Controller
         $course = $this->course->find($courseId);
 
         $order = $this->order->create(['sn' => build_order_no('E'), 'status' => 'created', 'course_id' => $courseId,
-            'items_total' => $course->price, 'total' => $course->price, 'user_id' => $user->id, 'title' => $course->title, ]);
+            'items_total' => $course->price, 'total' => $course->price, 'user_id' => $user->id, 'title' => $course->title,]);
 
         if (0 === $order->total && $userDetails) {
             $needPay = false;
@@ -83,7 +83,8 @@ class CourseOrderController extends Controller
         }
 
         $vipMember = $this->vipMember->getActiveByUser($user->id)->first();
-        $isVip = $vipMember ? true : false;
+        /*$isVip = $vipMember ? true : false;*/
+        $isVip = false;
 
         $freeCourseCount = 0;
 
@@ -165,8 +166,8 @@ class CourseOrderController extends Controller
         ]);
 
         if ('wx_pub' == $channel) {
-           // $redirectUrl = route('payment.wechat.getCode', ['charge_id' => $chargeModel->charge_id]);
-            $redirectUrl ='https://guojiang.club/payment/getCode?charge_id='.$chargeModel->charge_id;
+            // $redirectUrl = route('payment.wechat.getCode', ['charge_id' => $chargeModel->charge_id]);
+            $redirectUrl = 'https://guojiang.club/payment/getCode?charge_id=' . $chargeModel->charge_id;
         }
 
         if ('alipay_wap' == $channel) {
