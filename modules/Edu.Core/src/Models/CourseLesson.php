@@ -64,14 +64,14 @@ class CourseLesson extends Model
         return $this->mediaUri;
     }
 
-    public function getMediaUriAttribute($value)
+    /*public function getMediaUriAttribute($value)
     {
-        if (env('SECURE') AND $value == 'http') {
+        if (env('SECURE')) {
             $value = str_replace('http', 'https', $value);
         }
 
         return $value;
-    }
+    }*/
 
     /*public function getLivePicAttribute()
     {
