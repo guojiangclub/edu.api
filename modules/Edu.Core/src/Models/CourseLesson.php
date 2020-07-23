@@ -26,7 +26,7 @@ class CourseLesson extends Model
 
     public function __construct(array $attributes = [])
     {
-        $this->setTable(config('ibrand.app.database.prefix', 'ibrand_').'edu_course_lesson');
+        $this->setTable(config('ibrand.app.database.prefix', 'ibrand_') . 'edu_course_lesson');
 
         parent::__construct($attributes);
     }
@@ -66,7 +66,7 @@ class CourseLesson extends Model
 
     public function getMediaUriAttribute($value)
     {
-        if (env('SECURE')) {
+        if (env('SECURE') AND $value == 'http') {
             $value = str_replace('http', 'https', $value);
         }
 
