@@ -1,0 +1,10 @@
+version: '2'
+services:
+  admin:
+    build: .
+    image: registry.cn-hangzhou.aliyuncs.com/ibrand/admin
+    environment:
+      APP_URL: "//www-admin.ibrand.cc"
+      DB_DATABASE: "www"
+      DB_USERNAME: "ibrand"
+      DB_PASSWORD: "letmein"
