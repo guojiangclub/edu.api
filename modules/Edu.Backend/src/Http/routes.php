@@ -108,4 +108,28 @@ $router->group(['prefix' => 'admin/college'], function () use ($router) {
         $router->get('user', 'CommonController@modelUsers')->name('edu.common.users.model');
         $router->get('user/list', 'CommonController@getUserList')->name('edu.common.users.model.list');
     });
+
+    //推广管理
+    $router->group(['prefix' => 'ad'], function () use ($router) {
+        $router->get("/", "AdvertisementController@index")->name('edu.ad.list');
+        $router->get("create", "AdvertisementController@create")->name('edu.ad.create');
+        $router->get("edit/{id}", "AdvertisementController@edit")->name('edu.ad.edit');
+
+        $router->post("store", "AdvertisementController@store")->name('edu.ad.store');
+        $router->post("destroy/{id}", "AdvertisementController@destroy")->name('edu.ad.destroy');
+        $router->post('toggleStatus', 'AdvertisementController@toggleStatus')->name('edu.ad.toggleStatus');
+
+
+        $router->get("item", "AdvertisementItemController@index")->name('edu.ad.item.index');
+        $router->get("item/create", "AdvertisementItemController@create")->name('edu.ad.item.create');
+        $router->get("item/edit/{id}", "AdvertisementItemController@edit")->name('edu.ad.item.edit');
+        $router->post("item/store", "AdvertisementItemController@store")->name('edu.ad.item.store');
+        $router->post("item/destroy/{id}", "AdvertisementItemController@destroy")->name('edu.ad.item.destroy');
+        $router->post('item/toggleStatus', 'AdvertisementItemController@toggleStatus')->name('admin.ad.item.toggleStatus');
+    });
+
+    $router->get('settings', 'SettingsController@index')->name('edu.settings');
+    $router->post('saveSettings', 'SettingsController@saveSettings')->name('edu.settings.saveSettings');
+
+
 });
