@@ -90,7 +90,8 @@ class CourseController extends Controller
 
         if ($user) {
             $vipMember = $this->vipMember->getActiveByUser($user->id)->first();
-            $isVip = $vipMember ? true : false;
+            /*$isVip = $vipMember ? true : false;*/
+            $isVip = false;
 
             if ($isVip) {
                 $useCount = CourseOrderAdjustment::where('origin_type', 'vip')->where('origin_id', $vipMember->id)->whereHas('order', function ($query) {
