@@ -4,6 +4,9 @@ return [
     'default'      => [
         'disk' => env('DEFAULT_UPLOAD_DISK', 'public'),
     ],
+
+
+    
     'disks'        => [
         'qiniu' => [
             'driver'     => 'qiniu',

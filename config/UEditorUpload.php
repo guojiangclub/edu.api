@@ -21,6 +21,8 @@ return [
            // 'middleware' => 'auth',
         ],
 
+
+
         'mode'=>'qiniu',//上传方式,local 为本地   qiniu 为七牛
 
         //七牛配置,若mode='qiniu',以下为必填.
