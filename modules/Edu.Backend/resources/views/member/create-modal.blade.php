@@ -15,7 +15,7 @@
         {{csrf_field()}}
         <div class="row form-group">
             <div class="col-md-2 control-label">
-                <label for="student-nickname">学员昵称</label>
+                <label for="student-nickname">学员账号</label>
             </div>
             <div class="col-md-7 controls">
                 <input type="text" id="student-nickname" name="nickname" class="form-control" data-widget-cid="widget-5"

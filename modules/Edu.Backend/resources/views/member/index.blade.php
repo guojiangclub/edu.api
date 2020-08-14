@@ -43,7 +43,7 @@
                             @foreach ($students as $student)
                                 <tr>
                                     <td>
-                                        <a target="_blank" href="{{$student->user->link}}">{{$student->user->nick_name}}</a>
+                                        {{$student->user->mobile}}
                                     </td>
                                     <td>
                                         <a class="user-link user-avatar-link pull-left" href="{{$student->user->link}}">

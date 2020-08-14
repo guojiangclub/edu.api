@@ -94,7 +94,7 @@ class CourseMemberController extends Controller
 
             $remark = request('remark');
 
-            $user = $this->userRepository->getUserByLoginName($nickname);
+            $user = $this->userRepository->findWhere(['mobile'=>$nickname])->first();
 
             $member = $this->courseMemberRepository->getMemberByCourseIdAndUser($id, $user->id);
 
