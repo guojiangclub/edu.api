@@ -48,15 +48,15 @@ class CourseOrderController extends Controller
                                 CourseService $courseService,
                                 VipMemberRepository $vipMemberRepository)
     {
-        $this->order = $orderRepository;
-        $this->course = $courseRepository;
-        $this->coupon = $couponRepository;
-        $this->discountService = $discountService;
+        $this->order              = $orderRepository;
+        $this->course             = $courseRepository;
+        $this->coupon             = $couponRepository;
+        $this->discountService    = $discountService;
         $this->discountApplicator = $discountApplicator;
-        $this->details = $detailsRepository;
-        $this->vipMember = $vipMemberRepository;
-        $this->member = $courseMemberRepository;
-        $this->courseService = $courseService;
+        $this->details            = $detailsRepository;
+        $this->vipMember          = $vipMemberRepository;
+        $this->member             = $courseMemberRepository;
+        $this->courseService      = $courseService;
     }
 
     public function create()
@@ -71,8 +71,8 @@ class CourseOrderController extends Controller
 
         $course = $this->course->find($courseId);
 
-        $order = $this->order->create(['sn' => build_order_no('E'), 'status' => 'created', 'course_id' => $courseId,
-            'items_total' => $course->price, 'total' => $course->price, 'user_id' => $user->id, 'title' => $course->title,]);
+        $order = $this->order->create(['sn'          => build_order_no('E'), 'status' => 'created', 'course_id' => $courseId,
+                                       'items_total' => $course->price, 'total' => $course->price, 'user_id' => $user->id, 'title' => $course->title,]);
 
         if (0 === $order->total && $userDetails) {
             $needPay = false;
@@ -99,7 +99,7 @@ class CourseOrderController extends Controller
         }
 
         //get available coupons
-        list($coupons, $bestCouponID, $bestCouponAdjustmentTotal) = $this->getOrderCoupons($order, $user);
+        [$coupons, $bestCouponID, $bestCouponAdjustmentTotal] = $this->getOrderCoupons($order, $user);
 
         return $this->success(compact('needPay', 'order', 'freeCourseCount', 'userDetails', 'course', 'coupons', 'bestCouponID', 'bestCouponAdjustmentTotal', 'isVip', 'vipMember'));
     }
@@ -167,7 +167,7 @@ class CourseOrderController extends Controller
 
         if ('wx_pub' == $channel) {
             // $redirectUrl = route('payment.wechat.getCode', ['charge_id' => $chargeModel->charge_id]);
-            $redirectUrl = 'https://guojiang.club/payment/getCode?charge_id=' . $chargeModel->charge_id;
+            $redirectUrl = env('APP_URL') . '/payment/getCode?charge_id=' . $chargeModel->charge_id;
         }
 
         if ('alipay_wap' == $channel) {
@@ -201,7 +201,7 @@ class CourseOrderController extends Controller
         if ('paid' != $order->status) {
             $payRecords = ChargeModel::ofPaidOrderNo($order_no)->get();
             if ($payRecords->count() > 0 && $payRecords->sum('amount') >= $order->total) {
-                $order->status = 'paid';
+                $order->status  = 'paid';
                 $order->paid_at = Carbon::now();
                 $order->payment = $payRecords->first()->channel;
                 $order->save();
@@ -220,9 +220,9 @@ class CourseOrderController extends Controller
 
     private function getOrderCoupons($order, $user)
     {
-        $bestCouponID = 0;
+        $bestCouponID              = 0;
         $bestCouponAdjustmentTotal = 0;
-        $cheap_price = 0;
+        $cheap_price               = 0;
 
         $coupons = app(DiscountService::class)->getEligibilityCoupons($order, $user->id);
 
@@ -232,7 +232,7 @@ class CourseOrderController extends Controller
             if ($bestCoupon->orderAmountLimit > 0 and $bestCoupon->orderAmountLimit > ($order->total + $cheap_price)) {
                 $bestCouponID = 0;
             } else {
-                $bestCouponID = $bestCoupon->id;
+                $bestCouponID              = $bestCoupon->id;
                 $bestCouponAdjustmentTotal = -$bestCoupon->adjustmentTotal;
             }
             $coupons = collect_to_array($coupons);
