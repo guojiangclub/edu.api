@@ -199,7 +199,7 @@ class CourseOrderController extends Controller
         }
 
         if ('paid' != $order->status) {
-            $payRecords = \GuoJiangClub\Component\Pay\Models\Charge::ofPaidOrderNo($order_no)->get();
+            $payRecords = ChargeModel::ofPaidOrderNo($order_no)->get();
             if ($payRecords->count() > 0 && $payRecords->sum('amount') >= $order->total) {
                 $order->status = 'paid';
                 $order->paid_at = Carbon::now();
