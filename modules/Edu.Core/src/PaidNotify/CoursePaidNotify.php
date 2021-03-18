@@ -12,8 +12,8 @@
 namespace GuoJiangClub\Edu\Core\PaidNotify;
 
 use Carbon\Carbon;
-use GuoJiangClub\Component\Pay\Contracts\PayNotifyContract;
-use GuoJiangClub\Component\Pay\Models\Charge;
+use iBrand\Component\Pay\Contracts\PayNotifyContract;
+use iBrand\Component\Pay\Models\Charge;
 use GuoJiangClub\Edu\Core\Repositories\CourseOrderRepository;
 use GuoJiangClub\Edu\Core\Services\CourseService;
 
