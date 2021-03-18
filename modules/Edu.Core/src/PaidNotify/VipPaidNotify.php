@@ -12,14 +12,15 @@
 namespace GuoJiangClub\Edu\Core\PaidNotify;
 
 use Carbon\Carbon;
-use GuoJiangClub\Component\Pay\Contracts\PayNotifyContract;
-use GuoJiangClub\Component\Pay\Models\Charge;
+use iBrand\Component\Pay\Contracts\PayNotifyContract;
+use iBrand\Component\Pay\Models\Charge;
 use GuoJiangClub\Edu\Core\Repositories\VipMemberRepository;
 use GuoJiangClub\Edu\Core\Repositories\VipOrderRepository;
 
 class VipPaidNotify implements PayNotifyContract
 {
     protected $order;
+    protected $member;
 
     public function __construct(VipOrderRepository $orderRepository, VipMemberRepository $vipMemberRepository)
     {
@@ -43,8 +44,8 @@ class VipPaidNotify implements PayNotifyContract
 
             $order->transaction_no = $charge->transaction_no;
 
-            $this->member->create(['plan_id' => $order->plan_id, 'user_id' => $order->user_id,
-                'order_id' => $order->id, 'joined_at' => Carbon::now(), 'deadline' => Carbon::now()->addDays($order->plan->days), ]);
+            $this->member->create(['plan_id'  => $order->plan_id, 'user_id' => $order->user_id,
+                                   'order_id' => $order->id, 'joined_at' => Carbon::now(), 'deadline' => Carbon::now()->addDays($order->plan->days),]);
 
             $order->plan->increment('member_count', 1);
 
@@ -54,6 +55,7 @@ class VipPaidNotify implements PayNotifyContract
 
             return;
         }
+
         \Log::info('支付失败');
     }
 }
