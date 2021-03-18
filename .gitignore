@@ -5,7 +5,6 @@
 /vendor
 /.idea
 /.vagrant
-public/*
 public/vendor
 public/assets
 resources/views
