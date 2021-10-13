@@ -38,11 +38,11 @@ php artisan ibrand:edu-install
 
 ## H5
 
-源码地址：[果酱学院H5源码](https://github.com/guojiangclub/edu.h5)
+源码地址：[果酱学院H5源码](https://gitee.com/guojiangclub/edu.h5)
 
 
 ## 交流
 
-扫码添加[玖玖|彼得助理]，可获得“陈彼得”绝密编程资源以及25个副业赚钱思维。
+扫码添加[玖玖|彼得助理]，可获得“陈彼得”为大家精心整理的程序员成长学习路线图，以及前端、Java、Linux、Python等编程学习资料，同时还教你25个副业赚钱思维。
 
 ![玖玖|彼得助理 微信二维码](https://cdn.guojiang.club/xiaojunjunqyewx2.jpg)
