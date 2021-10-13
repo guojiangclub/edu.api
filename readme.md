@@ -1,12 +1,22 @@
-# 果酱学院
+## 果酱学院
 
 果酱学院是为专业教培机构和个人提供的支持在线教育服务的平台系统。
 
 目前只提供移动端 H5，不包含小程序，PC和APP.
 
-## 体验
+## 效果截图
 
-![果酱学院](https://iyoyo.oss-cn-hangzhou.aliyuncs.com/post/miniprogramcode/edu.qrcode.png)
+![果酱学院](https://cdn.guojiang.club/edu1012.jpg)
+
+## 功能列表
+
+- 课程管理（支持音、视频、图文）
+- 订单管理
+- 学员管理
+- 促销活动
+- 在线试看
+- 在线支付
+
 
 ## 安装
 
@@ -28,4 +38,11 @@ php artisan ibrand:edu-install
 
 ## H5
 
-源码地址：[果酱学院H5源码](http://gitlab.guojiang.club:8090/guojiangclub/edu.h5)
+源码地址：[果酱学院H5源码](https://github.com/guojiangclub/edu.h5)
+
+
+## 交流
+
+扫码添加[玖玖|彼得助理]，可获得“陈彼得”绝密编程资源以及25个副业赚钱思维。
+
+![玖玖|彼得助理 微信二维码](https://cdn.guojiang.club/xiaojunjunqyewx2.jpg)
