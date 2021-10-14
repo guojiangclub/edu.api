@@ -38,7 +38,7 @@ php artisan ibrand:edu-install
 
 ## H5
 
-源码地址：[果酱学院H5源码](https://gitee.com/guojiangclub/edu.h5)
+源码地址：[果酱学院H5源码](https://github.com/guojiangclub/edu.h5)
 
 
 ## 交流
